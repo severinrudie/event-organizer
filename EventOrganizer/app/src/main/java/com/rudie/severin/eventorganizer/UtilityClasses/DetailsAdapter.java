@@ -15,13 +15,16 @@ import java.util.ArrayList;
 /**
  * Created by erikrudie on 7/10/16.
  */
-// Inflates child views for ListView in activity_events.xml
-public class EventsAdapter extends BaseAdapter {
+/* TODO: this is currently copied from EventsAdapter.  Will need substantial changes, particularly a
+    conditional statement informing the adapter what information to grab.  See comment in
+    SuperCard.java
+*/
+public class DetailsAdapter extends BaseAdapter {
 
     Context mContext;
     ArrayList<EventCard> mEventCards;
 
-    public EventsAdapter(Context mContext, ArrayList<EventCard> mEventCards) {
+    public DetailsAdapter(Context mContext, ArrayList<EventCard> mEventCards) {
         this.mContext = mContext;
         this.mEventCards = mEventCards;
     }
