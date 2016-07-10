@@ -6,6 +6,8 @@ import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 /**
  * Created by erikrudie on 7/10/16.
  */
+
+// EventCard holds information about Events, displayed on EventsActivity (the launch activity)
 public class EventCard extends SuperCard {
 
     private String mSubtext1;

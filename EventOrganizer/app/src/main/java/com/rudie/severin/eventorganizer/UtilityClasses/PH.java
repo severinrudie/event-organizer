@@ -3,7 +3,7 @@ package com.rudie.severin.eventorganizer.UtilityClasses;
 /**
  * Created by erikrudie on 7/10/16.
  */
-// PH (ParameterHolder) can be accessed outside of a mContext, and so holds all hardcoded parameters
+// PH (ParameterHolder) can be accessed outside of a context, and so holds all hardcoded parameters
 
 public final class PH {
 

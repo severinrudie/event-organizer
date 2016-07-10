@@ -24,7 +24,6 @@ public class EventsActivity extends AppCompatActivity {
         mEventHolder = new ArrayList<EventCard>();
         mEventListView = (ListView) findViewById(R.id.eventsListView);
 
-
         adapter = new EventsAdapter(this, mEventHolder);
         mEventListView.setAdapter(adapter);
 
