@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="30dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:background="@color/colorPrimary"
+            android:minHeight="150dp" >
+
+            <TextView
+                style="@style/primaryText"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="New Event"
+                android:id="@+id/PARAM_ID_EVENT_HEADER"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#44ffffff"></FrameLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

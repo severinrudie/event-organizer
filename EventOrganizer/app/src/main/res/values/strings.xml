@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Event Organizer</string>
+
+    <string name="PARAM_ID_EVENT_HEADER">PARAM_ID_EVENT_HEADER</string>
+    <string name="PARAM_ID_EVENT_SUBTEXT1">PARAM_ID_EVENT_SUBTEXT1</string>
+    <string name="PARAM_ID_EVENT_SUBTEXT2">PARAM_ID_EVENT_SUBTEXT2</string>
+
 </resources>
