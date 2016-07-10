@@ -7,10 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
+import com.rudie.severin.eventorganizer.CardClasses.SuperCard;
 import com.rudie.severin.eventorganizer.R;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * Created by erikrudie on 7/10/16.
@@ -19,11 +22,13 @@ import java.util.ArrayList;
 public class EventsAdapter extends BaseAdapter {
 
     Context mContext;
-    ArrayList<EventCard> mEventCards;
+    ArrayList<SuperCard> mEventCards;
+    SimpleLogger logger;
 
-    public EventsAdapter(Context mContext, ArrayList<EventCard> mEventCards) {
+    public EventsAdapter(Context mContext, ArrayList<SuperCard> mEventCards) {
         this.mContext = mContext;
         this.mEventCards = mEventCards;
+        logger = new SimpleLogger("EventsAdapter");
     }
 
     @Override
@@ -46,18 +51,29 @@ public class EventsAdapter extends BaseAdapter {
 
         View v = child;
         CompleteListViewHolder viewHolder;
+        String type = mEventCards.get(position).getType();
+        if (type == null) {
+            logger.debug("Position == " + position);
+        }
+
         if (child == null) {
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.event_list_item, null);
-            viewHolder = new CompleteListViewHolder(v);
+
+            if (type.equals(PH.PARAM_EVENT_CARD)) {
+                v = inflater.inflate(R.layout.event_list_item, null);
+            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
+                v = inflater.inflate(R.layout.empty_event_list_item, null);
+            }
+
+            viewHolder = new CompleteListViewHolder(v, type);
             v.setTag(viewHolder);
         } else {
             viewHolder = (CompleteListViewHolder) v.getTag();
         }
-        viewHolder.header.setText(mEventCards.get(position).getHeader());
-        viewHolder.subtext1.setText(mEventCards.get(position).getSubtext1());
-        viewHolder.subtext2.setText(mEventCards.get(position).getSubtext2());
+
+        populateView(viewHolder, position, type);
+
 
         /*
         TODO: add onclick listener here. Pass over relevent <T extends SuperCard> object and set new
@@ -74,13 +90,38 @@ public class EventsAdapter extends BaseAdapter {
         public TextView subtext1;
         public TextView subtext2;
 
-        public CompleteListViewHolder(View base) {
-            header = (TextView) base.findViewById(R.id.eventHeader);
-            subtext1 = (TextView) base.findViewById(R.id.eventSubtext1);
-            subtext2 = (TextView) base.findViewById(R.id.eventSubtext2);
+        public CompleteListViewHolder(View base, String type) {
+            if (type.equals(PH.PARAM_EVENT_CARD)) {
+                header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
+                subtext1 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT1);
+                subtext2 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT2);
+            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)){
+                header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
+            }
         }
 
     }
+
+    // populates view according to card type
+    private void populateView(CompleteListViewHolder viewHolder, int position, String type) {
+        if (type != null) {
+
+            if (type.equals(PH.PARAM_EVENT_CARD)) {
+                EventCard card = (EventCard) mEventCards.get(position);
+
+                viewHolder.header.setText(card.getHeader());
+                viewHolder.subtext1.setText(card.getSubtext1());
+                viewHolder.subtext2.setText(card.getSubtext2());
+            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
+                EmptyEventCard card = (EmptyEventCard) mEventCards.get(position);
+
+                viewHolder.header.setText(card.getHeader());
+            }
+        }
+    }
+
+
+
 
 }
 

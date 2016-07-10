@@ -10,6 +10,6 @@ import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 public class EmptyEventCard extends SuperCard {
 
     public EmptyEventCard() {
-        super("New Event", PH.PARAM_EMPTY_EVENT_CARD);
+        super(PH.PARAM_EMPTY_EVENT_CARD, "New Event");
     }
 }

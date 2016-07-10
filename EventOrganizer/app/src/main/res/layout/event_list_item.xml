@@ -16,7 +16,6 @@
         android:background="@color/colorPrimary"
         android:id="@+id/eventOverall">
 
-        <!--style textSize overridden in heading TextView-->
         <TextView
             style="@style/primaryText"
             android:textAppearance="?android:attr/textAppearanceLarge"
