@@ -14,7 +14,7 @@
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:background="@color/colorPrimary"
-        android:id="@+id/eventOverall">
+        android:id="@+id/PARAM_ID_EVENT_OVERALL">
 
         <TextView
             style="@style/primaryText"
@@ -31,12 +31,6 @@
             android:id="@+id/PARAM_ID_EVENT_SUBTEXT2"
             />
     </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/frameGreyed"
-        android:id="@+id/PARAM_ID_FRAME"></FrameLayout>
 
 
 </LinearLayout>
