@@ -6,4 +6,6 @@
     <color name="lightPrimary">#FFCCBC</color>
     <color name="text">#FFFFFF</color>
     <color name="secondaryText">#727272</color>
+    <color name="frameGreyed">#44ffffff</color>
+    <color name="invisible">#00ffffff</color>
 </resources>

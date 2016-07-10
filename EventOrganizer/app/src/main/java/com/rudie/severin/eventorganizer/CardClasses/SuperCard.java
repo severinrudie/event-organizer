@@ -6,14 +6,19 @@ package com.rudie.severin.eventorganizer.CardClasses;
  *
  *  Coding is so cool.
  */
+
 public abstract class SuperCard {
 
     private String mHeader;
     private String mType;
+    private String mSubtext1;
+    private String mSubtext2;
 
-    public SuperCard(String type, String head) {
+    public SuperCard(String type, String head, String sub1, String sub2) {
         setHeader(head);
         setType(type);
+        this.mSubtext1 = sub1;
+        this.mSubtext2 = sub2;
     }
 
     public String getType() {
@@ -30,6 +35,22 @@ public abstract class SuperCard {
 
     public void setHeader(String header) {
         this.mHeader = header;
+    }
+
+    public String getSubtext1() {
+        return mSubtext1;
+    }
+
+    public void setSubtext1(String subtext1) {
+        this.mSubtext1 = subtext1;
+    }
+
+    public String getSubtext2() {
+        return mSubtext2;
+    }
+
+    public void setSubtext2(String subtext2) {
+        this.mSubtext2 = subtext2;
     }
 
 

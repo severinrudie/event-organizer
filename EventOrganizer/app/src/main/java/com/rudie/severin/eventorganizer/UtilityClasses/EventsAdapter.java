@@ -1,10 +1,13 @@
 package com.rudie.severin.eventorganizer.UtilityClasses;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
@@ -91,15 +94,17 @@ public class EventsAdapter extends BaseAdapter {
         public TextView header;
         public TextView subtext1;
         public TextView subtext2;
+        public FrameLayout frameLayout;
 
         public CompleteListViewHolder(View base, String type) {
-            if (type.equals(PH.PARAM_EVENT_CARD)) {
+//            if (type.equals(PH.PARAM_EVENT_CARD)) {
                 header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
                 subtext1 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT1);
                 subtext2 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT2);
-            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)){
-                header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
-            }
+            frameLayout = (FrameLayout) base.findViewById(R.id.PARAM_ID_FRAME);
+//            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)){
+//                header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
+//            }
         }
 
     }
@@ -112,12 +117,20 @@ public class EventsAdapter extends BaseAdapter {
                 EventCard card = (EventCard) mEventCards.get(position);
 
                 viewHolder.header.setText(card.getHeader());
+
                 viewHolder.subtext1.setText(card.getSubtext1());
                 viewHolder.subtext2.setText(card.getSubtext2());
+                int invisible = mContext.getResources().getColor(R.color.invisible);
+                viewHolder.frameLayout.setBackgroundColor(invisible);
             } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
+                int greyed = mContext.getResources().getColor(R.color.frameGreyed);
+
                 EmptyEventCard card = (EmptyEventCard) mEventCards.get(position);
 
                 viewHolder.header.setText(card.getHeader());
+                viewHolder.subtext1.setText("");
+                viewHolder.subtext2.setText("");
+                viewHolder.frameLayout.setBackgroundColor(greyed);
             }
         }
     }

@@ -18,6 +18,7 @@ public final class PH {
 //    public static final String PARAM_ID_EVENT_HEADER = "PARAM_ID_EVENT_HEADER";
 //    public static final String PARAM_ID_EVENT_SUBTEXT1 = "PARAM_ID_EVENT_SUBTEXT1";
 //    public static final String PARAM_ID_EVENT_SUBTEXT2 = "PARAM_ID_EVENT_SUBTEXT2";
+//    public static final String PARAM_ID_FRAME = "PARAM_ID_FRAME";
 
 
 

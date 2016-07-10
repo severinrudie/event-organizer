@@ -32,5 +32,11 @@
             />
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/frameGreyed"
+        android:id="@+id/PARAM_ID_FRAME"></FrameLayout>
+
 
 </LinearLayout>

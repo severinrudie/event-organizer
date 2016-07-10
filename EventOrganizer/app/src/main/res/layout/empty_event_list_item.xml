@@ -28,12 +28,22 @@
                 android:textSize="24sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/primaryText"
+                android:id="@+id/PARAM_ID_EVENT_SUBTEXT1" />
+
+            <TextView
+                style="@style/primaryText"
+                android:id="@+id/PARAM_ID_EVENT_SUBTEXT2"
+                />
         </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#44ffffff"></FrameLayout>
+            android:background="@color/frameGreyed"
+            android:id="@+id/PARAM_ID_FRAME"></FrameLayout>
     </FrameLayout>
 
 
