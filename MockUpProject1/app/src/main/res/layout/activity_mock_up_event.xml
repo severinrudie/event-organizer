@@ -29,7 +29,8 @@
             android:paddingRight="40dp"
             android:background="@color/colorPrimary"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:id="@+id/mockupEvent">
 
             <TextView
                 style="@style/primaryText"
