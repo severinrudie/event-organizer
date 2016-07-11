@@ -110,11 +110,11 @@ public class DetailsAdapter extends BaseAdapter {
             SuperDetailCard card = mDetailCards.get(position);
 
             if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
-                int greyedBackground = mContext.getResources().getColor(R.color.colorPrimaryGreyed);
-                viewHolder.linearLayout.setBackgroundColor(greyedBackground);
+                Drawable primaryBackground = mContext.getResources().getDrawable(R.drawable.black_border_greyed);
+                viewHolder.linearLayout.setBackground(primaryBackground);
             } else {
-                int primaryBackground = mContext.getResources().getColor(R.color.colorPrimary);
-                viewHolder.linearLayout.setBackgroundColor(primaryBackground);
+                Drawable primaryBackground = mContext.getResources().getDrawable(R.drawable.black_border);
+                viewHolder.linearLayout.setBackground(primaryBackground);
             }
 
             viewHolder.header.setText(card.getHeader());

@@ -13,10 +13,8 @@ import java.io.Serializable;
 
 public class LocationDetailCard extends SuperDetailCard implements Serializable {
 
-    public LocationDetailCard(EventCard event, String head, String sub1, String sub2, String sub3, String sub4) {
+    public LocationDetailCard(EventCard event, String sub1, String sub2, String sub3) {
         super(event, PH.PARAM_LOCATION_DETAIL_CARD, "Location", sub1, sub2, sub3, "");
-        setSubtext3(sub3);
-        setSubtext4(sub4);
-        setIconResource("@drawable/ic_directions_black_24dp");
+//        setIconResource("@drawable/ic_directions_black_24dp");
     }
 }

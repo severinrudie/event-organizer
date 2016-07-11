@@ -12,52 +12,59 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:padding="0dp">
+            android:background="@drawable/black_border"
+            android:layout_margin="4dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:padding="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:background="@color/colorPrimary"
+            android:layout_margin="-5dp"
             android:id="@+id/PARAM_ID_DETAIL_OVERALL"
             android:layout_weight="1">
 
             <TextView
                 style="@style/primaryText"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp"
                 android:text="Header"
-                android:id="@+id/PARAM_ID_DETAIL_HEADER" />
+                android:id="@+id/PARAM_ID_DETAIL_HEADER"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="0dp"
+                android:background="@color/frameGreyed"
+                android:layout_marginLeft="0dp"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:paddingRight="40dp" />
 
             <TextView
-                style="@style/primaryText"
+                style="@style/detailText"
                 android:text="Subtext1"
                 android:id="@+id/PARAM_ID_DETAIL_SUBTEXT1"
-                android:layout_marginTop="3dp" />
+                android:layout_marginLeft="5dp" />
 
             <TextView
-                style="@style/primaryText"
+                style="@style/detailText"
                 android:text="Subtext2"
                 android:id="@+id/PARAM_ID_DETAIL_SUBTEXT2"
-                android:layout_marginTop="-3dp" />
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp" />
 
             <TextView
-                style="@style/primaryText"
+                style="@style/detailText"
                 android:text="Subtext3"
                 android:id="@+id/PARAM_ID_DETAIL_SUBTEXT3"
-                android:layout_marginTop="-3dp" />
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp" />
 
             <TextView
-                style="@style/primaryText"
+                style="@style/detailText"
                 android:text="Subtext4"
                 android:id="@+id/PARAM_ID_DETAIL_SUBTEXT4"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="-3dp" />
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp" />
         </LinearLayout>
 
             <ImageButton
@@ -66,9 +73,12 @@
                 android:tint="@color/colorAccent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:backgroundTint="@color/text"
-                android:id="@+id/PARAM_ID_DETAIL_ICON"/>
+                android:layout_gravity="top|bottom|right"
+                android:backgroundTint="@android:color/transparent"
+                android:id="@+id/PARAM_ID_DETAIL_ICON"
+                android:background="@color/frameGreyed"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="5dp" />
 
         </FrameLayout>
 

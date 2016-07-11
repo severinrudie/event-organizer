@@ -31,18 +31,18 @@ public class CardHolder implements Serializable {
         mEventHolder.add(new EmptyEventCard());
         mDetailHolder = new ArrayList<>();
         //TEST START
-        mDetailHolder.add(new PeopleDetailCard(new EventCard("hi", "there", "people"), "head",
-                "newSub1", "newSub2", "", ""));
-        mDetailHolder.add(new LocationDetailCard(new EventCard("hi", "there", "people"), "head",
-                "Location", "newSub2", "sub3", "sub4"));
-        mDetailHolder.add(new TimeDetailCard(new EventCard("hi", "there", "people"), "head",
-                "Location", "newSub2", "sub3", "sub4"));
-        mDetailHolder.add(new FoodDetailCard(new EventCard("hi", "there", "people"), "head",
-                "Location", "newSub2", "sub3", "sub4"));
-        mDetailHolder.add(new TransitDetailCard(new EventCard("hi", "there", "people"), "head",
-                "Location", "newSub2", "sub3", "sub4"));
-        mDetailHolder.add(new OtherDetailCard(new EventCard("hi", "there", "people"), "head",
-                "Location", "newSub2", "sub3", "sub4"));
+        mDetailHolder.add(new PeopleDetailCard(new EventCard("hi", "there", "people"),
+                "John", "Joe", "", ""));
+        mDetailHolder.add(new LocationDetailCard(new EventCard("hi", "there", "people"),
+                "123", "Seattle", "98122"));
+        mDetailHolder.add(new TimeDetailCard(new EventCard("hi", "there", "people"),
+                "7/12/16", "8:00 PM"));
+        mDetailHolder.add(new FoodDetailCard(new EventCard("hi", "there", "people"),
+                "Pizza", "Hot Dogs", "", ""));
+        mDetailHolder.add(new TransitDetailCard(new EventCard("hi", "there", "people"),
+                "Joe - Joe's Car", "John - Joe's Car", "", ""));
+        mDetailHolder.add(new OtherDetailCard(new EventCard("hi", "there", "people"),
+                "Bring a basketball", "", "", ""));
         //TEST END
         mDetailHolder.add(new EmptyDetailCard());
     }

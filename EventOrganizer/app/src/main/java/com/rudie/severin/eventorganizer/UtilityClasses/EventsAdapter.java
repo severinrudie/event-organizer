@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -112,16 +113,16 @@ public class EventsAdapter extends BaseAdapter {
 
                 viewHolder.subtext1.setText(card.getSubtext1());
                 viewHolder.subtext2.setText(card.getSubtext2());
-                int primaryBackground = mContext.getResources().getColor(R.color.colorPrimary);
-                viewHolder.linearLayout.setBackgroundColor(primaryBackground);
+                Drawable primaryBackground = mContext.getResources().getDrawable(R.drawable.black_border);
+                viewHolder.linearLayout.setBackground(primaryBackground);
             } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
                 EmptyEventCard card = (EmptyEventCard) mEventCards.get(position);
 
                 viewHolder.header.setText(card.getHeader());
                 viewHolder.subtext1.setText("");
                 viewHolder.subtext2.setText("");
-                int greyedBackground = mContext.getResources().getColor(R.color.colorPrimaryGreyed);
-                viewHolder.linearLayout.setBackgroundColor(greyedBackground);
+                Drawable greyedBackground = mContext.getResources().getDrawable(R.drawable.black_border_greyed);
+                viewHolder.linearLayout.setBackground(greyedBackground);
             }
         }
     }

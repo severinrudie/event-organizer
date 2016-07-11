@@ -28,6 +28,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         setSubtext4(sub4);
         this.enteredText = new ArrayList<>();
         this.linkedEvent = event;
+        setIconResource("@drawable/ic_open_in_new_black_24dp");
     }
 
 // EmptyDetailCard constructor

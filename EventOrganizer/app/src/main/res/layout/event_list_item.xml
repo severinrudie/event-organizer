@@ -13,7 +13,6 @@
         android:padding="30dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
-        android:background="@color/colorPrimary"
         android:id="@+id/PARAM_ID_EVENT_OVERALL">
 
         <TextView

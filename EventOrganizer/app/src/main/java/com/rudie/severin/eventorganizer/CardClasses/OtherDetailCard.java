@@ -13,10 +13,8 @@ import java.io.Serializable;
 
 public class OtherDetailCard extends SuperDetailCard implements Serializable {
 
-    public OtherDetailCard(EventCard event, String head, String sub1, String sub2, String sub3, String sub4) {
+    public OtherDetailCard(EventCard event, String sub1, String sub2, String sub3, String sub4) {
         super(event, PH.PARAM_OTHER_DETAIL_CARD, "Other", sub1, sub2, sub3, sub4);
-        setSubtext3(sub3);
-        setSubtext4(sub4);
-        setIconResource("@drawable/ic_open_in_new_black_24dp");
+//        setIconResource("@drawable/ic_open_in_new_black_24dp");
     }
 }
