@@ -59,8 +59,8 @@ public class EventsAdapter extends BaseAdapter {
         View v = child;
         CompleteListViewHolder viewHolder;
         String type = mEventCards.get(position).getType();
-        logger.error(type);
-        logger.error("EventCards.size() == " + mEventCards.size());
+//        logger.error(type);
+//        logger.error("EventCards.size() == " + mEventCards.size());
         if (type == null) {
             logger.debug("Type == null. Position == " + position);
         }
