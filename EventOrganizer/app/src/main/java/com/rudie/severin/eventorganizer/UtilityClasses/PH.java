@@ -14,6 +14,12 @@ public final class PH {
 
     public static final String PARAM_EVENT_CARD = "PARAM_EVENT_CARD";
     public static final String PARAM_EMPTY_EVENT_CARD = "PARAM_EMPTY_EVENT_CARD";
+    public static final String PARAM_PEOPLE_DETAIL_CARD = "PARAM_PEOPLE_DETAIL_CARD";
+    public static final String PARAM_LOCATION_DETAIL_CARD = "PARAM_LOCATION_DETAIL_CARD";
+    public static final String PARAM_TIME_DETAIL_CARD = "PARAM_TIME_DETAIL_CARD";
+    public static final String PARAM_FOOD_DETAIL_CARD = "PARAM_FOOD_DETAIL_CARD";
+    public static final String PARAM_TRANSIT_DETAIL_CARD = "PARAM_TRANSIT_DETAIL_CARD";
+    public static final String PARAM_OTHER_DETAIL_CARD = "PARAM_OTHER_DETAIL_CARD";
 
 //    public static final String PARAM_ID_EVENT_HEADER = "PARAM_ID_EVENT_HEADER";
 //    public static final String PARAM_ID_EVENT_SUBTEXT1 = "PARAM_ID_EVENT_SUBTEXT1";

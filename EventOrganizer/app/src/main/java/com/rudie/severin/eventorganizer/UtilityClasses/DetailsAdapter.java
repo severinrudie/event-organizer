@@ -1,51 +1,47 @@
 package com.rudie.severin.eventorganizer.UtilityClasses;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
-import com.rudie.severin.eventorganizer.CardClasses.SuperCard;
-import com.rudie.severin.eventorganizer.EventsActivity;
+import com.rudie.severin.eventorganizer.CardClasses.PeopleDetailCard;
+import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
 import com.rudie.severin.eventorganizer.R;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  * Created by erikrudie on 7/10/16.
  */
 // Inflates child views for ListView in activity_events.xml
-public class EventsAdapter extends BaseAdapter {
+public class DetailsAdapter extends BaseAdapter {
 
     Context mContext;
-    ArrayList<SuperCard> mEventCards;
+    ArrayList<SuperDetailCard> mDetailCards;
     SimpleLogger logger;
     CardHolder cardHolder;
 
-    public EventsAdapter(Context mContext, CardHolder holder) {
+    public DetailsAdapter(Context mContext, CardHolder holder) {
         this.mContext = mContext;
-        this.mEventCards = holder.getEventHolder();
+        this.mDetailCards = holder.getDetailHolder();
         logger = new SimpleLogger("EventsAdapter");
         cardHolder = holder;
     }
 
     @Override
     public int getCount() {
-        return mEventCards.size();
+        return mDetailCards.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mEventCards.get(position);
+        return mDetailCards.get(position);
     }
 
     @Override
@@ -58,7 +54,7 @@ public class EventsAdapter extends BaseAdapter {
 
         View v = child;
         CompleteListViewHolder viewHolder;
-        String type = mEventCards.get(position).getType();
+        String type = mDetailCards.get(position).getType();
 
         if (type == null) {
             logger.debug("Type == null. Position == " + position);
@@ -68,7 +64,7 @@ public class EventsAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                v = inflater.inflate(R.layout.event_list_item, null);
+                v = inflater.inflate(R.layout.detail_list_item, null);
 
             viewHolder = new CompleteListViewHolder(v);
             v.setTag(viewHolder);
@@ -87,13 +83,19 @@ public class EventsAdapter extends BaseAdapter {
         public TextView header;
         public TextView subtext1;
         public TextView subtext2;
+        public TextView subtext3;
+        public TextView subtext4;
+        public ImageButton icon;
         public LinearLayout linearLayout;
 
         public CompleteListViewHolder(View base) {
-                header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
-                subtext1 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT1);
-                subtext2 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT2);
-                linearLayout = (LinearLayout) base.findViewById(R.id.PARAM_ID_EVENT_OVERALL);
+            header = (TextView) base.findViewById(R.id.PARAM_ID_DETAIL_HEADER);
+            subtext1 = (TextView) base.findViewById(R.id.PARAM_ID_DETAIL_SUBTEXT1);
+            subtext2 = (TextView) base.findViewById(R.id.PARAM_ID_DETAIL_SUBTEXT2);
+            subtext3 = (TextView) base.findViewById(R.id.PARAM_ID_DETAIL_SUBTEXT3);
+            subtext4 = (TextView) base.findViewById(R.id.PARAM_ID_DETAIL_SUBTEXT4);
+            icon = (ImageButton) base.findViewById(R.id.PARAM_ID_DETAIL_ICON);
+            linearLayout = (LinearLayout) base.findViewById(R.id.PARAM_ID_DETAIL_OVERALL);
         }
 
     }
@@ -102,39 +104,33 @@ public class EventsAdapter extends BaseAdapter {
     private void populateView(CompleteListViewHolder viewHolder, int position, String type) {
         if (type != null) {
 
-            if (type.equals(PH.PARAM_EVENT_CARD)) {
-                EventCard card = (EventCard) mEventCards.get(position);
+            if (type.equals(PH.PARAM_PEOPLE_DETAIL_CARD)) {
+                PeopleDetailCard card = (PeopleDetailCard) mDetailCards.get(position);
 
-                viewHolder.header.setText(card.getHeader());
+                setText(viewHolder, card.getHeader(), card.getSubtext1(), card.getSubtext2(),
+                        card.getSubtext3(), card.getSubtext4());
 
-                viewHolder.subtext1.setText(card.getSubtext1());
-                viewHolder.subtext2.setText(card.getSubtext2());
                 int primaryBackground = mContext.getResources().getColor(R.color.colorPrimary);
                 viewHolder.linearLayout.setBackgroundColor(primaryBackground);
-            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
-                EmptyEventCard card = (EmptyEventCard) mEventCards.get(position);
-
-                viewHolder.header.setText(card.getHeader());
-                viewHolder.subtext1.setText("");
-                viewHolder.subtext2.setText("");
-                int greyedBackground = mContext.getResources().getColor(R.color.colorPrimaryGreyed);
-                viewHolder.linearLayout.setBackgroundColor(greyedBackground);
             }
         }
     }
 
+    private void setText(CompleteListViewHolder viewHolder, String head, String sub1, String sub2,
+                            String sub3, String sub4) {
+
+        viewHolder.header.setText(head);
+        viewHolder.subtext1.setText(sub1);
+        viewHolder.subtext2.setText(sub2);
+        viewHolder.subtext3.setText(sub3);
+        viewHolder.subtext4.setText(sub4);
+    }
+
     private void setListener(View view, String type) {
 
-        if (type.equals(PH.PARAM_EVENT_CARD)) {
+        if (type.equals(PH.PARAM_PEOPLE_DETAIL_CARD)) {
             // TODO: put activity changes here
             view.setOnClickListener(null);
-        } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    cardHolder.addEventCard(new EventCard("Click here to add details", "", ""));
-                }
-            });
         }
 
     }

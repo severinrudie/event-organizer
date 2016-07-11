@@ -17,8 +17,8 @@ public abstract class SuperCard {
     public SuperCard(String type, String head, String sub1, String sub2) {
         setHeader(head);
         setType(type);
-        this.mSubtext1 = sub1;
-        this.mSubtext2 = sub2;
+        setSubtext1(sub1);
+        setSubtext2(sub2);
     }
 
     public String getType() {

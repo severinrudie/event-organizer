@@ -3,7 +3,9 @@ package com.rudie.severin.eventorganizer.UtilityClasses;
 import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperCard;
+import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +15,8 @@ public class CardHolder {
 
     ArrayList<SuperCard> mEventHolder;
     EventsAdapter mEventsAdapter;
+    ArrayList<SuperDetailCard> mDetailHolder;
+    DetailsAdapter mDetailsAdapter;
 
     public CardHolder() {
         mEventHolder = new ArrayList<>();
@@ -23,8 +27,16 @@ public class CardHolder {
         mEventsAdapter = eventsAdapter;
     }
 
+    public void passDetailsAdapter(DetailsAdapter detailsAdapter) {
+        mDetailsAdapter = detailsAdapter;
+    }
+
     public ArrayList<SuperCard> getEventHolder() {
         return mEventHolder;
+    }
+
+    public ArrayList<SuperDetailCard> getDetailHolder() {
+        return mDetailHolder;
     }
 
     public void addEventCard(EventCard newCard) {
