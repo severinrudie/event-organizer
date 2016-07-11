@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 
 public class EventsActivity extends AppCompatActivity {
 
-//    ArrayList<SuperCard> mEventHolder;
     ListView mEventListView;
     EventsAdapter adapter;
     String[] testArray;

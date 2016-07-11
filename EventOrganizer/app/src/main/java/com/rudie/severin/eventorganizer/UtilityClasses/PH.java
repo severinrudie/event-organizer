@@ -19,6 +19,16 @@ public final class PH {
 //    public static final String PARAM_ID_EVENT_SUBTEXT1 = "PARAM_ID_EVENT_SUBTEXT1";
 //    public static final String PARAM_ID_EVENT_SUBTEXT2 = "PARAM_ID_EVENT_SUBTEXT2";
 //    public static final String PARAM_ID_FRAME = "PARAM_ID_FRAME";
+//    public static final String PARAM_ID_DETAIL_OVERALL = "PARAM_ID_DETAIL_OVERALL";
+//    public static final String PARAM_ID_DETAIL_HEADER = "PARAM_ID_DETAIL_HEADER";
+//    public static final String PARAM_ID_DETAIL_SUBTEXT1 = "PARAM_ID_DETAIL_SUBTEXT1";
+//    public static final String PARAM_ID_DETAIL_SUBTEXT2 = "PARAM_ID_DETAIL_SUBTEXT2";
+//    public static final String PARAM_ID_DETAIL_SUBTEXT3 = "PARAM_ID_DETAIL_SUBTEXT3";
+//    public static final String PARAM_ID_DETAIL_SUBTEXT4 = "PARAM_ID_DETAIL_SUBTEXT4";
+
+
+
+
 
 
 

@@ -59,8 +59,7 @@ public class EventsAdapter extends BaseAdapter {
         View v = child;
         CompleteListViewHolder viewHolder;
         String type = mEventCards.get(position).getType();
-//        logger.error(type);
-//        logger.error("EventCards.size() == " + mEventCards.size());
+
         if (type == null) {
             logger.debug("Type == null. Position == " + position);
         }
@@ -134,7 +133,7 @@ public class EventsAdapter extends BaseAdapter {
     private void setListener(View view, String type) {
 
         if (type.equals(PH.PARAM_EVENT_CARD)) {
-            // TODO: put stuff here
+            // TODO: put activity changes here
             view.setOnClickListener(null);
         } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
             view.setOnClickListener(new View.OnClickListener() {

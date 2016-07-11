@@ -20,14 +20,18 @@
             style="@style/primaryText"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="24sp"
+            android:text="Header"
             android:id="@+id/PARAM_ID_EVENT_HEADER"/>
 
         <TextView
             style="@style/primaryText"
-            android:id="@+id/PARAM_ID_EVENT_SUBTEXT1" />
+            android:text="Subtext1"
+            android:id="@+id/PARAM_ID_EVENT_SUBTEXT1"
+            android:layout_marginTop="10dp" />
 
         <TextView
             style="@style/primaryText"
+            android:text="Subtext2"
             android:id="@+id/PARAM_ID_EVENT_SUBTEXT2"
             />
     </LinearLayout>

@@ -17,7 +17,6 @@ public class CardHolder {
     public CardHolder() {
         mEventHolder = new ArrayList<>();
         mEventHolder.add(new EmptyEventCard());
-
     }
 
     public void passEventsAdapter(EventsAdapter eventsAdapter) {
