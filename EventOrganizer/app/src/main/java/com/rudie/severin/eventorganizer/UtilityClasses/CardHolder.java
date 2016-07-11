@@ -3,9 +3,14 @@ package com.rudie.severin.eventorganizer.UtilityClasses;
 import com.rudie.severin.eventorganizer.CardClasses.EmptyDetailCard;
 import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
+import com.rudie.severin.eventorganizer.CardClasses.FoodDetailCard;
+import com.rudie.severin.eventorganizer.CardClasses.LocationDetailCard;
+import com.rudie.severin.eventorganizer.CardClasses.OtherDetailCard;
 import com.rudie.severin.eventorganizer.CardClasses.PeopleDetailCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
+import com.rudie.severin.eventorganizer.CardClasses.TimeDetailCard;
+import com.rudie.severin.eventorganizer.CardClasses.TransitDetailCard;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
@@ -26,12 +31,18 @@ public class CardHolder implements Serializable {
         mEventHolder.add(new EmptyEventCard());
         mDetailHolder = new ArrayList<>();
         //TEST START
-        mDetailHolder.add(new PeopleDetailCard(new EventCard("hi", "there", "people"), "newheader",
+        mDetailHolder.add(new PeopleDetailCard(new EventCard("hi", "there", "people"), "head",
                 "newSub1", "newSub2", "", ""));
-        mDetailHolder.add(new PeopleDetailCard(new EventCard("hi", "there", "people"), "newheader",
-                "newSub1", "newSub2", "", ""));
-        mDetailHolder.add(new PeopleDetailCard(new EventCard("hi", "there", "people"), "newheader",
-                "newSub1", "newSub2", "", ""));
+        mDetailHolder.add(new LocationDetailCard(new EventCard("hi", "there", "people"), "head",
+                "Location", "newSub2", "sub3", "sub4"));
+        mDetailHolder.add(new TimeDetailCard(new EventCard("hi", "there", "people"), "head",
+                "Location", "newSub2", "sub3", "sub4"));
+        mDetailHolder.add(new FoodDetailCard(new EventCard("hi", "there", "people"), "head",
+                "Location", "newSub2", "sub3", "sub4"));
+        mDetailHolder.add(new TransitDetailCard(new EventCard("hi", "there", "people"), "head",
+                "Location", "newSub2", "sub3", "sub4"));
+        mDetailHolder.add(new OtherDetailCard(new EventCard("hi", "there", "people"), "head",
+                "Location", "newSub2", "sub3", "sub4"));
         //TEST END
         mDetailHolder.add(new EmptyDetailCard());
     }

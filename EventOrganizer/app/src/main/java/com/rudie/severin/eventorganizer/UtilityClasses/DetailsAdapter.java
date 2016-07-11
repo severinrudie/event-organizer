@@ -1,6 +1,7 @@
 package com.rudie.severin.eventorganizer.UtilityClasses;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,34 +107,27 @@ public class DetailsAdapter extends BaseAdapter {
     private void populateView(CompleteListViewHolder viewHolder, int position, String type) {
         if (type != null) {
 
-            if (type.equals(PH.PARAM_PEOPLE_DETAIL_CARD)) {
-                PeopleDetailCard card = (PeopleDetailCard) mDetailCards.get(position);
+            SuperDetailCard card = mDetailCards.get(position);
 
-                setText(viewHolder, card.getHeader(), card.getSubtext1(), card.getSubtext2(),
-                        card.getSubtext3(), card.getSubtext4());
-
-                int primaryBackground = mContext.getResources().getColor(R.color.colorPrimary);
-                viewHolder.linearLayout.setBackgroundColor(primaryBackground);
-            } else if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
-                EmptyDetailCard card = (EmptyDetailCard) mDetailCards.get(position);
-
-                setText(viewHolder, card.getHeader(), card.getSubtext1(), card.getSubtext2(),
-                        card.getSubtext3(), card.getSubtext4());
-
+            if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
                 int greyedBackground = mContext.getResources().getColor(R.color.colorPrimaryGreyed);
                 viewHolder.linearLayout.setBackgroundColor(greyedBackground);
+            } else {
+                int primaryBackground = mContext.getResources().getColor(R.color.colorPrimary);
+                viewHolder.linearLayout.setBackgroundColor(primaryBackground);
             }
+
+            viewHolder.header.setText(card.getHeader());
+            viewHolder.subtext1.setText(card.getSubtext1());
+            viewHolder.subtext2.setText(card.getSubtext2());
+            viewHolder.subtext3.setText(card.getSubtext3());
+            viewHolder.subtext4.setText(card.getSubtext4());
+
+            int imageResource = mContext.getResources().getIdentifier(card.getIconResource(), null, mContext.getPackageName());
+            Drawable image = mContext.getResources().getDrawable(imageResource);
+            viewHolder.icon.setImageDrawable(image);
+
         }
-    }
-
-    private void setText(CompleteListViewHolder viewHolder, String head, String sub1, String sub2,
-                            String sub3, String sub4) {
-
-        viewHolder.header.setText(head);
-        viewHolder.subtext1.setText(sub1);
-        viewHolder.subtext2.setText(sub2);
-        viewHolder.subtext3.setText(sub3);
-        viewHolder.subtext4.setText(sub4);
     }
 
     private void setListener(View view, String type) {

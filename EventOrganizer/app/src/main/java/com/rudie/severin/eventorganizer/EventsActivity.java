@@ -12,10 +12,11 @@ public class EventsActivity extends AppCompatActivity {
 
     ListView mEventListView;
     EventsAdapter eventsAdapter;
-    String[] testArray;
-    int testIterater;
     SimpleLogger loggy;
     CardHolder cardHolder;
+
+    String[] testArray;
+    int testIterater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

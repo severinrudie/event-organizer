@@ -10,14 +10,13 @@ package com.rudie.severin.eventorganizer.CardClasses;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-public class PeopleDetailCard extends SuperDetailCard implements Serializable {
+public class TimeDetailCard extends SuperDetailCard implements Serializable {
 
-    public PeopleDetailCard(EventCard event, String head, String sub1, String sub2, String sub3, String sub4) {
-        super(event, PH.PARAM_PEOPLE_DETAIL_CARD, "People", sub1, sub2, sub3, sub4);
+    public TimeDetailCard(EventCard event, String head, String sub1, String sub2, String sub3, String sub4) {
+        super(event, PH.PARAM_TIME_DETAIL_CARD, "Time", sub1, sub2, "", "");
         setSubtext3(sub3);
         setSubtext4(sub4);
-        setIconResource("@drawable/ic_contacts_black_24dp");
+        setIconResource("@drawable/ic_schedule_black_24dp");
     }
 }

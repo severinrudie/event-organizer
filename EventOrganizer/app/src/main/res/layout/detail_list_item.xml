@@ -43,18 +43,21 @@
             <TextView
                 style="@style/primaryText"
                 android:text="Subtext2"
-                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT2" />
+                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT2"
+                android:layout_marginTop="-3dp" />
 
             <TextView
                 style="@style/primaryText"
                 android:text="Subtext3"
-                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT3" />
+                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT3"
+                android:layout_marginTop="-3dp" />
 
             <TextView
                 style="@style/primaryText"
                 android:text="Subtext4"
                 android:id="@+id/PARAM_ID_DETAIL_SUBTEXT4"
-                android:layout_marginRight="40dp" />
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="-3dp" />
         </LinearLayout>
 
             <ImageButton

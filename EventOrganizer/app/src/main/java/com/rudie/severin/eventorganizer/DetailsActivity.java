@@ -1,10 +1,8 @@
 package com.rudie.severin.eventorganizer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.widget.GridView;
 
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
@@ -19,7 +17,7 @@ public class DetailsActivity extends AppCompatActivity {
     DetailsAdapter mDetailsAdapter;
     SimpleLogger loggy;
     CardHolder cardHolder;
-    EventCard card;
+    EventCard currentEvent;
     Context mContext;
 
     @Override
@@ -29,18 +27,18 @@ public class DetailsActivity extends AppCompatActivity {
 
         mContext = this.getApplicationContext();
         Bundle extras = getIntent().getExtras();
-        card = null;
+        currentEvent = null;
         cardHolder = null;
 
         if (extras != null) {
-            card = (EventCard) extras.getSerializable(PH.PARAM_INTENT_CARD);
+            currentEvent = (EventCard) extras.getSerializable(PH.PARAM_INTENT_CARD);
             cardHolder = (CardHolder) extras.getSerializable(PH.PARAM_INTENT_CARDHOLDER);
         }
 
         mGridView = (GridView) findViewById(R.id.detailsGridView);
         mDetailsAdapter = new DetailsAdapter(mContext, cardHolder);
         mGridView.setAdapter(mDetailsAdapter);
-        loggy = new SimpleLogger("DetailsActivity:" + card.getType());
+        loggy = new SimpleLogger("DetailsActivity:" + currentEvent.getType());
         cardHolder.passDetailsAdapter(mDetailsAdapter);
 
     }
