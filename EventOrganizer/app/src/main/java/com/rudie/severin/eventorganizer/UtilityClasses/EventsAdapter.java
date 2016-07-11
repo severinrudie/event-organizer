@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperCard;
+import com.rudie.severin.eventorganizer.EventsActivity;
 import com.rudie.severin.eventorganizer.R;
 
 import java.util.ArrayList;
@@ -28,11 +29,13 @@ public class EventsAdapter extends BaseAdapter {
     Context mContext;
     ArrayList<SuperCard> mEventCards;
     SimpleLogger logger;
+    CardHolder cardHolder;
 
-    public EventsAdapter(Context mContext, ArrayList<SuperCard> mEventCards) {
+    public EventsAdapter(Context mContext, CardHolder holder) {
         this.mContext = mContext;
-        this.mEventCards = mEventCards;
+        this.mEventCards = holder.getEventHolder();
         logger = new SimpleLogger("EventsAdapter");
+        cardHolder = holder;
     }
 
     @Override
@@ -59,26 +62,23 @@ public class EventsAdapter extends BaseAdapter {
         logger.error(type);
         logger.error("EventCards.size() == " + mEventCards.size());
         if (type == null) {
-            logger.debug("Position == " + position);
+            logger.debug("Type == null. Position == " + position);
         }
 
         if (child == null) {
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            if (type.equals(PH.PARAM_EVENT_CARD)) {
                 v = inflater.inflate(R.layout.event_list_item, null);
-            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
-                v = inflater.inflate(R.layout.empty_event_list_item, null);
-            }
 
-            viewHolder = new CompleteListViewHolder(v, type);
+            viewHolder = new CompleteListViewHolder(v);
             v.setTag(viewHolder);
         } else {
             viewHolder = (CompleteListViewHolder) v.getTag();
         }
 
         populateView(viewHolder, position, type);
+        setListener(v, type);
 
 
         /*
@@ -97,15 +97,11 @@ public class EventsAdapter extends BaseAdapter {
         public TextView subtext2;
         public LinearLayout linearLayout;
 
-        public CompleteListViewHolder(View base, String type) {
-//            if (type.equals(PH.PARAM_EVENT_CARD)) {
+        public CompleteListViewHolder(View base) {
                 header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
                 subtext1 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT1);
                 subtext2 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT2);
                 linearLayout = (LinearLayout) base.findViewById(R.id.PARAM_ID_EVENT_OVERALL);
-//            } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)){
-//                header = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_HEADER);
-//            }
         }
 
     }
@@ -133,6 +129,22 @@ public class EventsAdapter extends BaseAdapter {
                 viewHolder.linearLayout.setBackgroundColor(greyedBackground);
             }
         }
+    }
+
+    private void setListener(View view, String type) {
+
+        if (type.equals(PH.PARAM_EVENT_CARD)) {
+            // TODO: put stuff here
+            view.setOnClickListener(null);
+        } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cardHolder.addEventCard(new EventCard("Click here to add details", "", ""));
+                }
+            });
+        }
+
     }
 
 

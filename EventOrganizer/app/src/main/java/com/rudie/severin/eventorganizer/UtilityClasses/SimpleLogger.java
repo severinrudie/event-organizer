@@ -25,4 +25,6 @@ public class SimpleLogger {
     public void error(String message){
         Log.e(parentName,message);
     }
+
+    public void i(String message) { Log.i(parentName, message);}
 }

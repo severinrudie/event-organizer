@@ -9,4 +9,5 @@
     <color name="secondaryText">#727272</color>
     <color name="frameGreyed">#44ffffff</color>
     <color name="invisible">#00ffffff</color>
+    <color name="background">#ffffff</color>
 </resources>
