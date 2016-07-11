@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.rudie.severin.eventorganizer.CardClasses.EmptyDetailCard;
+import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.PeopleDetailCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
@@ -30,7 +32,7 @@ public class DetailsAdapter extends BaseAdapter {
     public DetailsAdapter(Context mContext, CardHolder holder) {
         this.mContext = mContext;
         this.mDetailCards = holder.getDetailHolder();
-        logger = new SimpleLogger("EventsAdapter");
+        logger = new SimpleLogger("DetailsAdapter");
         cardHolder = holder;
     }
 
@@ -112,6 +114,14 @@ public class DetailsAdapter extends BaseAdapter {
 
                 int primaryBackground = mContext.getResources().getColor(R.color.colorPrimary);
                 viewHolder.linearLayout.setBackgroundColor(primaryBackground);
+            } else if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
+                EmptyDetailCard card = (EmptyDetailCard) mDetailCards.get(position);
+
+                setText(viewHolder, card.getHeader(), card.getSubtext1(), card.getSubtext2(),
+                        card.getSubtext3(), card.getSubtext4());
+
+                int greyedBackground = mContext.getResources().getColor(R.color.colorPrimaryGreyed);
+                viewHolder.linearLayout.setBackgroundColor(greyedBackground);
             }
         }
     }

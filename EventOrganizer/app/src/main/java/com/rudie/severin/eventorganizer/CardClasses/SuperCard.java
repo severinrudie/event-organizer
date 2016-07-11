@@ -7,7 +7,9 @@ package com.rudie.severin.eventorganizer.CardClasses;
  *  Coding is so cool.
  */
 
-public abstract class SuperCard {
+import java.io.Serializable;
+
+public abstract class SuperCard implements Serializable {
 
     private String mHeader;
     private String mType;

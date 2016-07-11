@@ -2,7 +2,9 @@ package com.rudie.severin.eventorganizer.UtilityClasses;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperCard;
+import com.rudie.severin.eventorganizer.DetailsActivity;
 import com.rudie.severin.eventorganizer.EventsActivity;
 import com.rudie.severin.eventorganizer.R;
 
@@ -77,7 +80,7 @@ public class EventsAdapter extends BaseAdapter {
         }
 
         populateView(viewHolder, position, type);
-        setListener(v, type);
+        setListener(v, type, mEventCards.get(position), cardHolder);
 
         return v;
     }
@@ -123,11 +126,24 @@ public class EventsAdapter extends BaseAdapter {
         }
     }
 
-    private void setListener(View view, String type) {
+    private void setListener(View view, String type, final SuperCard card, final CardHolder cardHolder) {
 
         if (type.equals(PH.PARAM_EVENT_CARD)) {
             // TODO: put activity changes here
-            view.setOnClickListener(null);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(PH.PARAM_INTENT_CARD, card);
+                    bundle.putSerializable(PH.PARAM_INTENT_CARDHOLDER, cardHolder);
+
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                }
+            });
+
         } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

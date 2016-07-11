@@ -20,6 +20,10 @@ public final class PH {
     public static final String PARAM_FOOD_DETAIL_CARD = "PARAM_FOOD_DETAIL_CARD";
     public static final String PARAM_TRANSIT_DETAIL_CARD = "PARAM_TRANSIT_DETAIL_CARD";
     public static final String PARAM_OTHER_DETAIL_CARD = "PARAM_OTHER_DETAIL_CARD";
+    public static final String PARAM_EMPTY_DETAIL_CARD = "PARAM_EMPTY_DETAIL_CARD";
+
+    public static final String PARAM_INTENT_CARD = "PARAM_INTENT_CARD";
+    public static final String PARAM_INTENT_CARDHOLDER = "PARAM_INTENT_CARDHOLDER";
 
 //    public static final String PARAM_ID_EVENT_HEADER = "PARAM_ID_EVENT_HEADER";
 //    public static final String PARAM_ID_EVENT_SUBTEXT1 = "PARAM_ID_EVENT_SUBTEXT1";

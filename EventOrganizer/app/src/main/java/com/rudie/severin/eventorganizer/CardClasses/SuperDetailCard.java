@@ -7,9 +7,10 @@ package com.rudie.severin.eventorganizer.CardClasses;
  *  Coding is so cool.
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class SuperDetailCard extends SuperCard {
+public abstract class SuperDetailCard extends SuperCard implements Serializable {
 
     private String mHeader;
     private String mType;
@@ -28,6 +29,14 @@ public abstract class SuperDetailCard extends SuperCard {
         this.enteredText = new ArrayList<>();
         this.linkedEvent = event;
     }
+
+// EmptyDetailCard constructor
+    public SuperDetailCard(String type, String head, String sub1, String sub2, String sub3, String sub4) {
+        super(type, head, sub1, sub2);
+        setSubtext3(sub3);
+        setSubtext4(sub4);
+    }
+
 
     public String getType() {
         return this.mType;
