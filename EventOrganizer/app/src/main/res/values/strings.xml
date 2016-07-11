@@ -4,5 +4,6 @@
     <string name="PARAM_ID_EVENT_HEADER">PARAM_ID_EVENT_HEADER</string>
     <string name="PARAM_ID_EVENT_SUBTEXT1">PARAM_ID_EVENT_SUBTEXT1</string>
     <string name="PARAM_ID_EVENT_SUBTEXT2">PARAM_ID_EVENT_SUBTEXT2</string>
+    <string name="title_activity_edit_detail">EditDetailActivity</string>
 
 </resources>
