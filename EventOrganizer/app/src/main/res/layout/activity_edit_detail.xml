@@ -8,11 +8,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rudie.severin.eventorganizer.EditDetailActivity"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#303030">
 
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="4dp"
         android:background="@drawable/black_border"
@@ -32,7 +33,6 @@
                 android:textSize="20sp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Header"
-                android:id="@+id/PARAM_ID_DETAIL_HEADER"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="0dp"
@@ -43,44 +43,89 @@
                 android:gravity="center_vertical"
                 android:paddingRight="40dp" />
 
-            <TextView
+            <EditText
                 style="@style/primaryText"
-                android:text="Subtext1"
-                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT1"
-                android:layout_marginLeft="5dp" />
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:minWidth="@dimen/edittext_width" />
 
-            <TextView
+            <EditText
                 style="@style/primaryText"
-                android:text="Subtext2"
-                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT2"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
                 android:layout_marginTop="-3dp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width" />
 
-            <TextView
+            <EditText
                 style="@style/primaryText"
-                android:text="Subtext3"
-                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT3"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
                 android:layout_marginTop="-3dp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width" />
 
-            <TextView
+            <EditText
                 style="@style/primaryText"
-                android:text="Subtext4"
-                android:id="@+id/PARAM_ID_DETAIL_SUBTEXT4"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="-3dp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width" />
+
+            <EditText
+                style="@style/primaryText"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width" />
+
+            <EditText
+                style="@style/primaryText"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width" />
+
+            <EditText
+                style="@style/primaryText"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width" />
+
+            <EditText
+                style="@style/primaryText"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="bottom">
+
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Save"
                     android:layout_weight="1"
+                    android:background="@drawable/black_border_accent"
                     android:id="@+id/button" />
 
                 <Button
@@ -88,6 +133,7 @@
                     android:layout_height="wrap_content"
                     android:text="Cancel"
                     android:layout_weight="1"
+                    android:background="@drawable/black_border_accent"
                     android:id="@+id/button2" />
 
                 <Button
@@ -95,10 +141,15 @@
                     android:layout_height="wrap_content"
                     android:text="Delete"
                     android:layout_weight="1"
+                    android:background="@drawable/black_border_accent"
                     android:id="@+id/button3" />
+                
             </LinearLayout>
+
         </LinearLayout>
 
     </FrameLayout>
 
 </RelativeLayout>
+
+

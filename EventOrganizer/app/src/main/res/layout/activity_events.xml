@@ -12,6 +12,8 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/eventsListView" />
+        android:id="@+id/eventsListView"
+        android:dividerHeight="5px"
+        android:divider="@color/colorAccent"/>
 
 </RelativeLayout>
