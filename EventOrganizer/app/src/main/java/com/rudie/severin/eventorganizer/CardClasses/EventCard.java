@@ -1,5 +1,7 @@
 package com.rudie.severin.eventorganizer.CardClasses;
 
+import android.util.Log;
+
 import com.rudie.severin.eventorganizer.DetailsActivity;
 import com.rudie.severin.eventorganizer.R;
 import com.rudie.severin.eventorganizer.UtilityClasses.DetailsAdapter;
@@ -20,12 +22,10 @@ public class EventCard extends SuperCard implements Serializable {
     private String mSubtext1;
     private String mSubtext2;
     private ArrayList<SuperDetailCard> attachedDetails;
-    private SimpleLogger logger;
 
     public EventCard(String head, String sub1, String sub2) {
         super(PH.PARAM_EVENT_CARD, head, sub1, sub2);
         attachedDetails = new ArrayList<>();
-        logger = new SimpleLogger(("EventCard: " + this));
     }
 
 //  Begin getters & setters
@@ -40,8 +40,7 @@ public class EventCard extends SuperCard implements Serializable {
         SuperDetailCard newDetail = new EmptyDetailCard(this);
         attachedDetails.add(newDetail);
 
-//        detailsAdapter.notifyDataSetChanged();
-        logger.i("empty detail card created");
+        Log.i("EventCard: ", "empty detail card added");
     }
 
     public void verifyThatEmptyDetailExists() {

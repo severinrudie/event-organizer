@@ -84,7 +84,7 @@ public class DetailsAdapter extends BaseAdapter {
         }
 
         populateView(viewHolder, position, type);
-        setListener(v, type, mDetailCards, parentEvent);
+        setListener(v, type, card, parentEvent);
 
         return v;
     }
@@ -138,17 +138,15 @@ public class DetailsAdapter extends BaseAdapter {
         }
     }
 
-    private void setListener(View view, String type, ArrayList<SuperDetailCard> detailCards,
+    private void setListener(View view, String type, final SuperDetailCard detailCard,
                              EventCard parentEvent) {
 
         if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
-            final EmptyDetailCard newCard = new EmptyDetailCard(parentEvent);
-            detailCards.add(newCard);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable(PH.PARAM_CURRENT_DETAIL, newCard);
+                    bundle.putSerializable(PH.PARAM_CURRENT_DETAIL, detailCard);
 
                     Intent intent = new Intent(mContext, EditDetailActivity.class);
                     intent.putExtras(bundle);

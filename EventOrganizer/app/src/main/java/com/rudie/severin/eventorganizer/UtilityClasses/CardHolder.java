@@ -23,13 +23,13 @@ public class CardHolder implements Serializable {
 
     ArrayList<SuperCard> mEventHolder;
     transient EventsAdapter mEventsAdapter;
-    ArrayList<SuperDetailCard> mDetailHolder;
+//    transient ArrayList<SuperDetailCard> mDetailHolder;
     transient DetailsAdapter mDetailsAdapter;
 
     public CardHolder() {
         mEventHolder = new ArrayList<>();
         mEventHolder.add(new EmptyEventCard());
-        mDetailHolder = new ArrayList<>();
+//        mDetailHolder = new ArrayList<>();
         //TEST START
 //        mDetailHolder.add(new PeopleDetailCard(new EventCard("hi", "there", "people"),
 //                "John", "Joe", "", ""));
@@ -60,9 +60,9 @@ public class CardHolder implements Serializable {
         return mEventHolder;
     }
 
-    public ArrayList<SuperDetailCard> getDetailHolder() {
-        return mDetailHolder;
-    }
+//    public ArrayList<SuperDetailCard> getDetailHolder() {
+//        return mDetailHolder;
+//    }
 
     public void addEventCard(EventCard newCard) {
 
