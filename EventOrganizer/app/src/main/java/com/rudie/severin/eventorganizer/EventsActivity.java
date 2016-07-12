@@ -24,10 +24,7 @@ public class EventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        if (cardHolder == null) {
-            cardHolder = new CardHolder();
-            Log.i("EventsActivity:SEV ", "creating new cardholder");
-        }
+        cardHolder = CardHolder.getInstance();
         mEventListView = (ListView) findViewById(R.id.eventsListView);
 
         eventsAdapter = new EventsAdapter(this, cardHolder);

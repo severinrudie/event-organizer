@@ -81,6 +81,11 @@ public class CardHolder {
         mDetailsAdapter = detailsAdapter;
     }
 
+    public void notifyAdaptersDataChanged() {
+        mDetailsAdapter.notifyDataSetChanged();
+        mEventsAdapter.notifyDataSetChanged();
+    }
+
     public ArrayList<SuperCard> getEventHolder() {
         return mEventHolder;
     }

@@ -138,15 +138,11 @@ public class DetailsAdapter extends BaseAdapter {
     private void setListener(View view, String type, final SuperDetailCard detailCard,
                              EventCard parentEvent) {
 
-        if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(PH.PARAM_CURRENT_DETAIL, detailCard);
-
+                    CardHolder.setCurrentDetail(detailCard);
                     Intent intent = new Intent(mContext, EditDetailActivity.class);
-                    intent.putExtras(bundle);
                     //TODO: Ask the instructors about this
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     //TODO: android.util.AndroidRuntimeException: Calling startActivity() from
@@ -157,7 +153,7 @@ public class DetailsAdapter extends BaseAdapter {
 
         }
 
-    }
+
 
 
 

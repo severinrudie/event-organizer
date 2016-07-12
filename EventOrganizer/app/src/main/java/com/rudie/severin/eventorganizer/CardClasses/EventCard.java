@@ -49,27 +49,31 @@ public class EventCard extends SuperCard implements Serializable {
     }
 
     public void verifyThatEmptyDetailExists() {
-
-        ArrayList<SuperDetailCard> details = CardHolder.getCurrentEvent().getAttachedDetails();
-        // can throw ConcurrentModificationException.  If so, waits for 5 MS then tries again
-        try {
-            for (SuperDetailCard card : details) {
-                Log.i("EventCard:SEV ", "card.type==" + card.getType());
-                if (card.getType().equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
-                    details.remove(card);
-                    Log.i("EventCard:SEV ", "removing card");
-                }
-            }
-            addEmptyDetailCard();
-        } catch (ConcurrentModificationException e) {
+        if (CardHolder.getCurrentEvent().getAttachedDetails().size() > 0) {
+            ArrayList<SuperDetailCard> details = CardHolder.getCurrentEvent().getAttachedDetails();
+            // can throw ConcurrentModificationException.  If so, waits for 5 MS then tries again
             try {
-                Thread.sleep(5);
-            } catch (Exception j){}
-            verifyThatEmptyDetailExists();
+                for (SuperDetailCard card : details) {
+                    Log.i("EventCard:SEV ", "card.type==" + card.getType());
+                    if (card.getType().equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
+                        details.remove(card);
+                        Log.i("EventCard:SEV ", "removing card");
+                    }
+                }
+                addEmptyDetailCard();
+            } catch (ConcurrentModificationException e) {
+                try {
+                    Thread.sleep(5);
+                } catch (Exception j) {
+                }
+                verifyThatEmptyDetailExists();
+            }
+        } else {
+            addEmptyDetailCard();
         }
     }
 
-    public void addPeopleDetailCard(String sub1, String sub2, String sub3,
+    public PeopleDetailCard addPeopleDetailCard(String sub1, String sub2, String sub3,
                                     String sub4) {
         PeopleDetailCard newDetail = new PeopleDetailCard(CardHolder.getCurrentEvent(), sub1, sub2, sub3, sub4);
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
@@ -77,6 +81,8 @@ public class EventCard extends SuperCard implements Serializable {
 
         Log.i("EventCard:SEV ", "" + newDetail.getParentEvent());
         Log.i("EventCard:SEV ", "attachedDetails.size==" + CardHolder.getCurrentEvent().getAttachedDetails().size());
+
+        return newDetail;
     }
 
 }

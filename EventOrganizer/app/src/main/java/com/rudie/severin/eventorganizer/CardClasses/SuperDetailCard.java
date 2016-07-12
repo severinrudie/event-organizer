@@ -7,6 +7,7 @@ package com.rudie.severin.eventorganizer.CardClasses;
  *  Coding is so cool.
  */
 
+import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 
 import java.io.Serializable;
@@ -29,7 +30,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         setSubtext3(sub3);
         setSubtext4(sub4);
         this.enteredText = new ArrayList<>();
-        this.linkedEvent = event;
+        this.linkedEvent = CardHolder.getCurrentEvent();
         setIconResource("@drawable/ic_open_in_new_black_24dp");
     }
 
@@ -38,7 +39,8 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         super(type, head, sub1, sub2);
         setSubtext3("");
         setSubtext4("");
-        this.linkedEvent = event;
+        this.enteredText = new ArrayList<>();
+        this.linkedEvent = CardHolder.getCurrentEvent();
     }
 
 // Begin getters & setters
@@ -100,6 +102,10 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
 
     public ArrayList<String> getEnteredText() {
         return enteredText;
+    }
+
+    public void setEnteredText(ArrayList<String> enteredText) {
+        this.enteredText = enteredText;
     }
 
     public EventCard getParentEvent() {
