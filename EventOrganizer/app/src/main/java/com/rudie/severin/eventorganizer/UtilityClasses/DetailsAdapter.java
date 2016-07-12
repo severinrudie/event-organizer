@@ -32,13 +32,14 @@ public class DetailsAdapter extends BaseAdapter {
     Context mContext;
     ArrayList<SuperDetailCard> mDetailCards;
     SimpleLogger logger;
-    CardHolder cardHolder;
+//    CardHolder cardHolder;
+    EventCard parentCard;
 
-    public DetailsAdapter(Context mContext, CardHolder holder) {
+    public DetailsAdapter(Context mContext, ArrayList<SuperDetailCard> detailCards) {
         this.mContext = mContext;
-        this.mDetailCards = holder.getDetailHolder();
+        this.mDetailCards = detailCards;
         logger = new SimpleLogger("DetailsAdapter");
-        cardHolder = holder;
+//        cardHolder = holder;
     }
 
     @Override

@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.widget.GridView;
 
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
+import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
 import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.DetailsAdapter;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 import com.rudie.severin.eventorganizer.UtilityClasses.SimpleLogger;
+
+import java.util.ArrayList;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -34,12 +37,18 @@ public class DetailsActivity extends AppCompatActivity {
             currentEvent = (EventCard) extras.getSerializable(PH.PARAM_INTENT_CARD);
             cardHolder = (CardHolder) extras.getSerializable(PH.PARAM_INTENT_CARDHOLDER);
         }
+        currentEvent.verifyThatEmptyDetailExists();
 
+        ArrayList<SuperDetailCard> eventDetails = currentEvent.getAttachedDetails();
         mGridView = (GridView) findViewById(R.id.detailsGridView);
-        mDetailsAdapter = new DetailsAdapter(mContext, cardHolder);
-        mGridView.setAdapter(mDetailsAdapter);
+        mDetailsAdapter = new DetailsAdapter(mContext, eventDetails);
+        if (mGridView != null) {
+            mGridView.setAdapter(mDetailsAdapter);
+        }
         loggy = new SimpleLogger("DetailsActivity:" + currentEvent.getType());
         cardHolder.passDetailsAdapter(mDetailsAdapter);
 
     }
+
+
 }

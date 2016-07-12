@@ -12,5 +12,6 @@ public class EditDetailActivity extends AppCompatActivity {
 
 
 
+
     }
 }
