@@ -35,13 +35,12 @@ public class EventsAdapter extends BaseAdapter {
     Context mContext;
     ArrayList<SuperCard> mEventCards;
     SimpleLogger logger;
-    CardHolder cardHolder;
 
     public EventsAdapter(Context mContext, CardHolder holder) {
         this.mContext = mContext;
+        holder = CardHolder.getInstance();
         this.mEventCards = holder.getEventHolder();
         logger = new SimpleLogger("EventsAdapter");
-        cardHolder = holder;
     }
 
     @Override
@@ -83,6 +82,7 @@ public class EventsAdapter extends BaseAdapter {
         }
 
         populateView(viewHolder, position, type);
+        CardHolder cardHolder = CardHolder.getInstance();
         setListener(v, type, mEventCards.get(position), cardHolder);
 
         return v;
@@ -101,7 +101,6 @@ public class EventsAdapter extends BaseAdapter {
                 subtext2 = (TextView) base.findViewById(R.id.PARAM_ID_EVENT_SUBTEXT2);
                 linearLayout = (LinearLayout) base.findViewById(R.id.PARAM_ID_EVENT_OVERALL);
         }
-
     }
 
     // populates view according to card type
@@ -152,11 +151,6 @@ public class EventsAdapter extends BaseAdapter {
                 }
             });
         }
-
     }
-
-
-
-
 }
 

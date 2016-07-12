@@ -2,17 +2,12 @@ package com.rudie.severin.eventorganizer.CardClasses;
 
 import android.util.Log;
 
-import com.rudie.severin.eventorganizer.DetailsActivity;
-import com.rudie.severin.eventorganizer.R;
 import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
-import com.rudie.severin.eventorganizer.UtilityClasses.DetailsAdapter;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
-import com.rudie.severin.eventorganizer.UtilityClasses.SimpleLogger;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
-import java.util.logging.Logger;
 
 /**
  * Created by erikrudie on 7/10/16.
@@ -41,7 +36,7 @@ public class EventCard extends SuperCard implements Serializable {
 
 
     private void addEmptyDetailCard() {
-        SuperDetailCard newDetail = new EmptyDetailCard(CardHolder.getCurrentEvent());
+        SuperDetailCard newDetail = new EmptyDetailCard();
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         Log.i("EventCard:SEV ", "" + CardHolder.getCurrentEvent());
         Log.i("EventCard:SEV ", "attachedDetails.size==" + CardHolder.getCurrentEvent().getAttachedDetails().size());
@@ -75,21 +70,21 @@ public class EventCard extends SuperCard implements Serializable {
 
     public PeopleDetailCard addPeopleDetailCard(String sub1, String sub2, String sub3,
                                                 String sub4) {
-        PeopleDetailCard newDetail = new PeopleDetailCard(CardHolder.getCurrentEvent(), sub1, sub2, sub3, sub4);
+        PeopleDetailCard newDetail = new PeopleDetailCard(sub1, sub2, sub3, sub4);
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         verifyThatEmptyDetailExists();
 
         return newDetail;
     }
     public LocationDetailCard addLocationDetailCard(String sub1, String sub2, String sub3) {
-        LocationDetailCard newDetail = new LocationDetailCard(CardHolder.getCurrentEvent(), sub1, sub2, sub3);
+        LocationDetailCard newDetail = new LocationDetailCard(sub1, sub2, sub3);
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         verifyThatEmptyDetailExists();
 
         return newDetail;
     }
     public TimeDetailCard addTimeDetailCard(String sub1, String sub2) {
-        TimeDetailCard newDetail = new TimeDetailCard(CardHolder.getCurrentEvent(), sub1, sub2);
+        TimeDetailCard newDetail = new TimeDetailCard(sub1, sub2);
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         verifyThatEmptyDetailExists();
 
@@ -97,7 +92,7 @@ public class EventCard extends SuperCard implements Serializable {
     }
     public FoodDetailCard addFoodDetailCard(String sub1, String sub2, String sub3,
                                                 String sub4) {
-        FoodDetailCard newDetail = new FoodDetailCard(CardHolder.getCurrentEvent(), sub1, sub2, sub3, sub4);
+        FoodDetailCard newDetail = new FoodDetailCard(sub1, sub2, sub3, sub4);
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         verifyThatEmptyDetailExists();
 
@@ -105,7 +100,7 @@ public class EventCard extends SuperCard implements Serializable {
     }
     public TransitDetailCard addTransitDetailCard(String sub1, String sub2, String sub3,
                                                 String sub4) {
-        TransitDetailCard newDetail = new TransitDetailCard(CardHolder.getCurrentEvent(), sub1, sub2, sub3, sub4);
+        TransitDetailCard newDetail = new TransitDetailCard(sub1, sub2, sub3, sub4);
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         verifyThatEmptyDetailExists();
 
@@ -113,7 +108,7 @@ public class EventCard extends SuperCard implements Serializable {
     }
     public OtherDetailCard addOtherDetailCard(String sub1, String sub2, String sub3,
                                                 String sub4) {
-        OtherDetailCard newDetail = new OtherDetailCard(CardHolder.getCurrentEvent(), sub1, sub2, sub3, sub4);
+        OtherDetailCard newDetail = new OtherDetailCard(sub1, sub2, sub3, sub4);
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         verifyThatEmptyDetailExists();
 

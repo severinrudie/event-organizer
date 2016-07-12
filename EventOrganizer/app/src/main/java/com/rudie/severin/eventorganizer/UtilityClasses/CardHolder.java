@@ -1,5 +1,6 @@
 package com.rudie.severin.eventorganizer.UtilityClasses;
 
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.rudie.severin.eventorganizer.CardClasses.EmptyDetailCard;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 /**
  * Created by erikrudie on 7/10/16.
  */
-public class CardHolder {
+public class CardHolder implements Serializable {
 
     ArrayList<SuperCard> mEventHolder;
     transient EventsAdapter mEventsAdapter;
@@ -75,14 +76,26 @@ public class CardHolder {
 
     public void passEventsAdapter(EventsAdapter eventsAdapter) {
         mEventsAdapter = eventsAdapter;
+        Log.d("CardHolder", "Events adapter passed");
     }
 
     public void passDetailsAdapter(DetailsAdapter detailsAdapter) {
         mDetailsAdapter = detailsAdapter;
+        Log.d("CardHolder", "Details adapter passed");
     }
 
     public void notifyAdaptersDataChanged() {
-        mDetailsAdapter.notifyDataSetChanged();
+        // If this fires before the user reaches the second activity, it will return a null
+        // pointer exception but will not impact functionality
+        try {
+            mEventsAdapter.notifyDataSetChanged();
+        } catch (Exception e) {}
+        try {
+            mDetailsAdapter.notifyDataSetChanged();
+        } catch (Exception f) {}
+    }
+
+    public void notifyEventAdapterOnly() {
         mEventsAdapter.notifyDataSetChanged();
     }
 
@@ -97,6 +110,6 @@ public class CardHolder {
         mEventHolder.add(newCard);
         mEventHolder.add(new EmptyEventCard());
 
-        mEventsAdapter.notifyDataSetChanged();
+        notifyEventAdapterOnly();
     }
 }

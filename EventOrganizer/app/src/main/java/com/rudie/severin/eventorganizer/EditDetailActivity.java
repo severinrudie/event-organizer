@@ -50,6 +50,7 @@ public class EditDetailActivity extends AppCompatActivity {
         editText6 = (EditText) findViewById(R.id.EDIT_DETAIL_EDITTEXT6);
         editText7 = (EditText) findViewById(R.id.EDIT_DETAIL_EDITTEXT7);
         editText8 = (EditText) findViewById(R.id.EDIT_DETAIL_EDITTEXT8);
+        // array used to populate current spinner index
         EditText[] tempArray = {editText1, editText2, editText3, editText4,
                 editText5, editText6, editText7, editText8};
         editList = Arrays.asList(tempArray);
@@ -73,8 +74,7 @@ public class EditDetailActivity extends AppCompatActivity {
             }
         });
         setSpinnerDefault();
-
-    }
+    }  // end onCreate
 
     @Override
     protected void onResume() {
@@ -85,65 +85,51 @@ public class EditDetailActivity extends AppCompatActivity {
                 editList.get(i).setText(CardHolder.getCurrentDetail().getEnteredText().get(i));
             }
         }
-        Log.i("EdtDtlActv:SEVres ", "currentEvent:" + CardHolder.currentEvent);
     }
 
     private void cancelButton() {
         this.finish();
     }
 
-    private void collectValues() {
-
-    }
-
     private void saveButton() {
         String spinText = spinner.getSelectedItem().toString();
-        String detailType = null;
         ArrayList<String> enteredText = collectText();
         ArrayList<String> displayText = enteredText;
         displayText = padToFour(displayText);
 
         if (spinText.equals("People Attending")) {
-//            detailType = PH.PARAM_PEOPLE_DETAIL_CARD;
             displayText = setEllipsis(displayText);
             PeopleDetailCard newCard = CardHolder.getCurrentEvent().addPeopleDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
             newCard.setEnteredText(displayText);
         } else if (spinText.equals("Event Location")) {
-//            detailType = PH.PARAM_LOCATION_DETAIL_CARD;
             LocationDetailCard newCard = CardHolder.getCurrentEvent().addLocationDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2));
             newCard.setEnteredText(displayText);
         } else if (spinText.equals("Event Time")) {
-//            detailType = PH.PARAM_TIME_DETAIL_CARD;
             TimeDetailCard newCard = CardHolder.getCurrentEvent().addTimeDetailCard(displayText.get(0),
                     displayText.get(1));
             newCard.setEnteredText(displayText);
         } else if (spinText.equals("Food")) {
-//            detailType = PH.PARAM_FOOD_DETAIL_CARD;
             displayText = setEllipsis(displayText);
             FoodDetailCard newCard = CardHolder.getCurrentEvent().addFoodDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
             newCard.setEnteredText(displayText);
         } else if (spinText.equals("Transportation")) {
-//            detailType = PH.PARAM_TRANSIT_DETAIL_CARD;
             displayText = setEllipsis(displayText);
             TransitDetailCard newCard = CardHolder.getCurrentEvent().addTransitDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
             newCard.setEnteredText(displayText);
         } else if (spinText.equals("Other")) {
-//            detailType = PH.PARAM_OTHER_DETAIL_CARD;
             displayText = setEllipsis(displayText);
             OtherDetailCard newCard = CardHolder.getCurrentEvent().addOtherDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
             newCard.setEnteredText(displayText);
         }
-
         CardHolder cardHolder = CardHolder.getInstance();
         cardHolder.getCurrentEvent().attachedDetails.remove(cardHolder.getCurrentDetail());
         cardHolder.notifyAdaptersDataChanged();
         cancelButton();
-
     }
 
     private ArrayList<String> padToFour(ArrayList<String> displayText) {
@@ -180,7 +166,6 @@ public class EditDetailActivity extends AppCompatActivity {
     }
 
     private void setSpinnerDefault() {
-
 //         people, location, time, food, transit, other
         String type = CardHolder.getCurrentDetail().getType();
 
@@ -197,12 +182,10 @@ public class EditDetailActivity extends AppCompatActivity {
         } else if (type.equals(PH.PARAM_OTHER_DETAIL_CARD)) {
             spinner.setSelection(5);
         }
-
     }
 
     private void deleteButton() {
         CardHolder.getCurrentEvent().attachedDetails.remove(CardHolder.getCurrentDetail());
         finish();
     }
-
 }

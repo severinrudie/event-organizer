@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 public class TimeDetailCard extends SuperDetailCard implements Serializable {
 
-    public TimeDetailCard(EventCard event, String sub1, String sub2) {
+    public TimeDetailCard(String sub1, String sub2) {
         super(CardHolder.getCurrentEvent(), PH.PARAM_TIME_DETAIL_CARD, "Time", sub1, sub2, "", "");
 //        setIconResource("@drawable/ic_schedule_black_24dp");
     }

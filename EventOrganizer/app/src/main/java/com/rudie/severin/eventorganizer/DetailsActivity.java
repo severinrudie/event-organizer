@@ -56,19 +56,15 @@ public class DetailsActivity extends AppCompatActivity {
                 saveEventTitle();
             }
         });
-    }
+    }  // end onCreate
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("DetailsActivity:SEVres ", "detailsize:" + CardHolder.getCurrentEvent().attachedDetails.size());
-        Log.i("DetailsActivity:SEVres ", "cardholder.eventholder:" + cardHolder.getEventHolder().size());
         mDetailsAdapter.notifyDataSetChanged();
-        Log.i("DetailsActivity:SEVres ", "currentEvent:" + CardHolder.getCurrentEvent());
     }
 
     public void saveEventTitle() {
-        Log.i("SEVTEST ", "iyrcutc" + editTextSaveTitle.getText().toString());
         if (editTextSaveTitle.getText().toString().length() != 0) {
             CardHolder.getCurrentEvent().setHeader(editTextSaveTitle.getText().toString());
             editTextSaveTitle.setText("");
@@ -79,5 +75,4 @@ public class DetailsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
         }
     }
-
 }

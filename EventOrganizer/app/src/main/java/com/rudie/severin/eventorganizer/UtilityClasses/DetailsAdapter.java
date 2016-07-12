@@ -107,7 +107,6 @@ public class DetailsAdapter extends BaseAdapter {
             icon = (ImageButton) base.findViewById(R.id.PARAM_ID_DETAIL_ICON);
             linearLayout = (LinearLayout) base.findViewById(R.id.PARAM_ID_DETAIL_OVERALL);
         }
-
     }
 
     // populates view according to card type
@@ -154,13 +153,6 @@ public class DetailsAdapter extends BaseAdapter {
                     mContext.startActivity(intent);
                 }
             });
-
         }
-
-
-
-
-
-
 }
 
