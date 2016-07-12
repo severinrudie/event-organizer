@@ -11,6 +11,7 @@ import com.rudie.severin.eventorganizer.UtilityClasses.SimpleLogger;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.logging.Logger;
 
 /**
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  */
 
 // EventCard holds information about Events, displayed on EventsActivity (the launch activity)
-public class EventCard extends SuperCard  {
+public class EventCard extends SuperCard implements Serializable {
     // implements serializable
 
     private String mSubtext1;
@@ -48,14 +49,24 @@ public class EventCard extends SuperCard  {
     }
 
     public void verifyThatEmptyDetailExists() {
-        boolean noEmpty = true;
-        for (SuperDetailCard card : attachedDetails) {
-            Log.i("EventCard:SEV ", "card.type==" + card.getType());
-            if (card.getType().equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
-                attachedDetails.remove(card);
+
+        ArrayList<SuperDetailCard> details = CardHolder.getCurrentEvent().getAttachedDetails();
+        // can throw ConcurrentModificationException.  If so, waits for 5 MS then tries again
+        try {
+            for (SuperDetailCard card : details) {
+                Log.i("EventCard:SEV ", "card.type==" + card.getType());
+                if (card.getType().equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
+                    details.remove(card);
+                    Log.i("EventCard:SEV ", "removing card");
+                }
             }
-        }
             addEmptyDetailCard();
+        } catch (ConcurrentModificationException e) {
+            try {
+                Thread.sleep(5);
+            } catch (Exception j){}
+            verifyThatEmptyDetailExists();
+        }
     }
 
     public void addPeopleDetailCard(String sub1, String sub2, String sub3,

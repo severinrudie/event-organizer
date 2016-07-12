@@ -94,7 +94,7 @@ public class EditDetailActivity extends AppCompatActivity {
 //            parentEvent.setDebugName();
             //endtemp
             detailType = PH.PARAM_PEOPLE_DETAIL_CARD;
-            parentEvent.addPeopleDetailCard("there", "person", "hi", "hello");
+            CardHolder.getCurrentEvent().addPeopleDetailCard("there", "person", "hi", "hello");
             Log.i("EdtDtlActv:SEVres ", "currentEvent:" + CardHolder.currentEvent);
         } else if (spinText.equals("Event Location")) {
             detailType = PH.PARAM_LOCATION_DETAIL_CARD;
@@ -107,8 +107,8 @@ public class EditDetailActivity extends AppCompatActivity {
         } else if (spinText.equals("Other")) {
             detailType = PH.PARAM_OTHER_DETAIL_CARD;
         }
-        parentEvent.attachedDetails.remove(currentDetail);
-        parentEvent.verifyThatEmptyDetailExists();
+//        parentEvent.attachedDetails.remove(currentDetail);
+//        parentEvent.verifyThatEmptyDetailExists();
 
 //        cancelButton();
     }
