@@ -5,5 +5,15 @@
     <string name="PARAM_ID_EVENT_SUBTEXT1">PARAM_ID_EVENT_SUBTEXT1</string>
     <string name="PARAM_ID_EVENT_SUBTEXT2">PARAM_ID_EVENT_SUBTEXT2</string>
     <string name="title_activity_edit_detail">EditDetailActivity</string>
+    <string name="spinner_prompt">Select Detail Type here</string>
+
+    <string-array name="EditDetailsSpinner">
+        <item>People Attending</item>
+        <item>Event Location</item>
+        <item>Event Time</item>
+        <item>Food</item>
+        <item>Transportation</item>
+        <item>Other</item>
+    </string-array>
 
 </resources>

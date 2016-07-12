@@ -13,8 +13,8 @@ import java.io.Serializable;
 
 public class EmptyDetailCard extends SuperDetailCard implements Serializable {
 
-    public EmptyDetailCard() {
-        super(PH.PARAM_EMPTY_DETAIL_CARD, "Click to add detail", "", "", "", "");
+    public EmptyDetailCard(EventCard event) {
+        super(event, PH.PARAM_EMPTY_DETAIL_CARD, "Click to add detail", "", "");
         setIconResource("@drawable/ic_note_add_black_24dp");
     }
 }

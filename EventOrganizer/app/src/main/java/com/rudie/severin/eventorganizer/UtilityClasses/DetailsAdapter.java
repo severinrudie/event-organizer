@@ -1,7 +1,9 @@
 package com.rudie.severin.eventorganizer.UtilityClasses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.PeopleDetailCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
+import com.rudie.severin.eventorganizer.DetailsActivity;
+import com.rudie.severin.eventorganizer.EditDetailActivity;
 import com.rudie.severin.eventorganizer.R;
 
 import java.util.ArrayList;
@@ -59,6 +63,9 @@ public class DetailsAdapter extends BaseAdapter {
         CompleteListViewHolder viewHolder;
         String type = mDetailCards.get(position).getType();
 
+        SuperDetailCard card = mDetailCards.get(position);
+        EventCard parentEvent = card.getLinkedEvent();
+
         if (type == null) {
             logger.debug("Type == null. Position == " + position);
         }
@@ -76,7 +83,7 @@ public class DetailsAdapter extends BaseAdapter {
         }
 
         populateView(viewHolder, position, type);
-        setListener(v, type);
+        setListener(v, type, mDetailCards, parentEvent);
 
         return v;
     }
@@ -130,11 +137,28 @@ public class DetailsAdapter extends BaseAdapter {
         }
     }
 
-    private void setListener(View view, String type) {
+    private void setListener(View view, String type, ArrayList<SuperDetailCard> detailCards,
+                             EventCard parentEvent) {
 
-        if (type.equals(PH.PARAM_PEOPLE_DETAIL_CARD)) {
-            // TODO: put activity changes here
-            view.setOnClickListener(null);
+        if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
+            final EmptyDetailCard newCard = new EmptyDetailCard(parentEvent);
+            detailCards.add(newCard);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(PH.PARAM_CURRENT_DETAIL, newCard);
+
+                    Intent intent = new Intent(mContext, EditDetailActivity.class);
+                    intent.putExtras(bundle);
+                    //TODO: Ask the instructors about this
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //TODO: android.util.AndroidRuntimeException: Calling startActivity() from
+                    //TODO: outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag.
+                    mContext.startActivity(intent);
+                }
+            });
+
         }
 
     }

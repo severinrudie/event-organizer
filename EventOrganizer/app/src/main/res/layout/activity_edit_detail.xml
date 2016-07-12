@@ -28,36 +28,25 @@
             android:id="@+id/PARAM_ID_DETAIL_OVERALL"
             android:layout_weight="1">
 
-            <TextView
-                style="@style/primaryText"
-                android:textSize="20sp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Header"
+            <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="0dp"
-                android:background="@color/frameGreyed"
-                android:layout_marginLeft="0dp"
-                android:paddingLeft="5dp"
-                android:gravity="center_vertical"
-                android:paddingRight="40dp" />
+                android:layout_height="50dp"
+                android:entries="@array/EditDetailsSpinner"
+                android:background="@drawable/black_border_accent"
+                android:prompt="@string/spinner_prompt"
+                android:id="@+id/EDIT_DETAIL_SPINNER"
+                />
 
             <EditText
                 style="@style/primaryText"
                 android:hint="Edit information here"
                 android:textColorHint="@color/edittext_text"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:minWidth="@dimen/edittext_width" />
-
-            <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
-                android:textColorHint="@color/edittext_text"
-                android:layout_marginTop="-3dp"
-                android:layout_marginLeft="5dp"
-                android:minWidth="@dimen/edittext_width" />
+                android:layout_marginTop="10dp"
+                android:minWidth="@dimen/edittext_width" 
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT1"
+                />
 
             <EditText
                 style="@style/primaryText"
@@ -65,7 +54,19 @@
                 android:textColorHint="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
-                android:minWidth="@dimen/edittext_width" />
+                android:minWidth="@dimen/edittext_width"
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT2"/>
+
+            <EditText
+                style="@style/primaryText"
+                android:hint="Edit information here"
+                android:textColorHint="@color/edittext_text"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width"
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT3"/>
 
             <EditText
                 style="@style/primaryText"
@@ -74,7 +75,9 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
-                android:minWidth="@dimen/edittext_width" />
+                android:minWidth="@dimen/edittext_width"
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT4"/>
 
             <EditText
                 style="@style/primaryText"
@@ -82,7 +85,9 @@
                 android:textColorHint="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
-                android:minWidth="@dimen/edittext_width" />
+                android:minWidth="@dimen/edittext_width"
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT5"/>
 
             <EditText
                 style="@style/primaryText"
@@ -90,7 +95,9 @@
                 android:textColorHint="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
-                android:minWidth="@dimen/edittext_width" />
+                android:minWidth="@dimen/edittext_width"
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT6"/>
 
             <EditText
                 style="@style/primaryText"
@@ -99,7 +106,9 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
-                android:minWidth="@dimen/edittext_width" />
+                android:minWidth="@dimen/edittext_width"
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT7"/>
 
             <EditText
                 style="@style/primaryText"
@@ -111,7 +120,8 @@
                 android:minWidth="@dimen/edittext_width"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText" />
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/EDIT_DETAIL_EDITTEXT8"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -126,7 +136,7 @@
                     android:text="Save"
                     android:layout_weight="1"
                     android:background="@drawable/black_border_accent"
-                    android:id="@+id/button" />
+                    android:id="@+id/EDIT_DETAIL_BUTTON_SAVE" />
 
                 <Button
                     android:layout_width="0dp"
@@ -134,7 +144,7 @@
                     android:text="Cancel"
                     android:layout_weight="1"
                     android:background="@drawable/black_border_accent"
-                    android:id="@+id/button2" />
+                    android:id="@+id/EDIT_DETAIL_BUTTON_CANCEL" />
 
                 <Button
                     android:layout_width="0dp"
@@ -142,7 +152,7 @@
                     android:text="Delete"
                     android:layout_weight="1"
                     android:background="@drawable/black_border_accent"
-                    android:id="@+id/button3" />
+                    android:id="@+id/EDIT_DETAIL_BUTTON_DELETE" />
                 
             </LinearLayout>
 

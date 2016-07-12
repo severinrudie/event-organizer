@@ -130,7 +130,7 @@ public class CardHolder implements Serializable {
         mDetailHolder.add(new OtherDetailCard(new EventCard("hi", "there", "people"),
                 "Bring a basketball", "", "", ""));
         //TEST END
-        mDetailHolder.add(new EmptyDetailCard());
+        mDetailHolder.add(new EmptyDetailCard(new EventCard("head", "sub1", "sub2")));
     }
 
     public void passEventsAdapter(EventsAdapter eventsAdapter) {

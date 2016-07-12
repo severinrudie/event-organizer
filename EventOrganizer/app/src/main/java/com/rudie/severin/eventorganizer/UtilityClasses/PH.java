@@ -25,6 +25,8 @@ public final class PH {
     public static final String PARAM_INTENT_CARD = "PARAM_INTENT_CARD";
     public static final String PARAM_INTENT_CARDHOLDER = "PARAM_INTENT_CARDHOLDER";
 
+
+
 //    public static final String PARAM_ID_EVENT_HEADER = "PARAM_ID_EVENT_HEADER";
 //    public static final String PARAM_ID_EVENT_SUBTEXT1 = "PARAM_ID_EVENT_SUBTEXT1";
 //    public static final String PARAM_ID_EVENT_SUBTEXT2 = "PARAM_ID_EVENT_SUBTEXT2";
@@ -35,6 +37,12 @@ public final class PH {
 //    public static final String PARAM_ID_DETAIL_SUBTEXT2 = "PARAM_ID_DETAIL_SUBTEXT2";
 //    public static final String PARAM_ID_DETAIL_SUBTEXT3 = "PARAM_ID_DETAIL_SUBTEXT3";
 //    public static final String PARAM_ID_DETAIL_SUBTEXT4 = "PARAM_ID_DETAIL_SUBTEXT4";
+
+    public static final String EDIT_DETAIL_BUTTON_SAVE = "EDIT_DETAIL_BUTTON_SAVE";
+    public static final String EDIT_DETAIL_BUTTON_CANCEL = "EDIT_DETAIL_BUTTON_CANCEL";
+    public static final String EDIT_DETAIL_BUTTON_DELETE = "EDIT_DETAIL_BUTTON_DELETE";
+
+    public static final String PARAM_CURRENT_DETAIL = "PARAM_CURRENT_DETAIL";
 
 
 

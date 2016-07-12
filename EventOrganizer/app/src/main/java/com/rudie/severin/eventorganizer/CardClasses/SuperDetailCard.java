@@ -32,10 +32,10 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
     }
 
 // EmptyDetailCard constructor
-    public SuperDetailCard(String type, String head, String sub1, String sub2, String sub3, String sub4) {
+    public SuperDetailCard(EventCard event, String type, String head, String sub1, String sub2) {
         super(type, head, sub1, sub2);
-        setSubtext3(sub3);
-        setSubtext4(sub4);
+        setSubtext3("");
+        setSubtext4("");
     }
 
 
@@ -99,5 +99,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         return enteredText;
     }
 
-
+    public EventCard getLinkedEvent() {
+        return linkedEvent;
+    }
 }

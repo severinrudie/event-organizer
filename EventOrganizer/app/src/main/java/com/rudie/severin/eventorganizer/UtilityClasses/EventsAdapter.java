@@ -130,7 +130,6 @@ public class EventsAdapter extends BaseAdapter {
     private void setListener(View view, String type, final SuperCard card, final CardHolder cardHolder) {
 
         if (type.equals(PH.PARAM_EVENT_CARD)) {
-            // TODO: put activity changes here
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
