@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -8,6 +9,27 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:mContext="com.rudie.severin.eventorganizer.DetailsActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edittextNewEventTitle"
+            android:hint="Set Event Name Here"
+            android:layout_weight="2" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:background="@drawable/black_border"
+            android:id="@+id/buttonNewEventTitle"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <GridView
         android:layout_width="match_parent"
@@ -20,4 +42,4 @@
         android:stretchMode="columnWidth"
         android:numColumns="2"
         android:id="@+id/detailsGridView"/>
-</RelativeLayout>
+</LinearLayout>

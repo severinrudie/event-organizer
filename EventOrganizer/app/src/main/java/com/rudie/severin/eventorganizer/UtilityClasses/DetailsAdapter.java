@@ -127,7 +127,11 @@ public class DetailsAdapter extends BaseAdapter {
             viewHolder.subtext1.setText(card.getSubtext1());
             viewHolder.subtext2.setText(card.getSubtext2());
             viewHolder.subtext3.setText(card.getSubtext3());
-            viewHolder.subtext4.setText(card.getSubtext4());
+            if (card.getEnteredText().size() > 4){
+                viewHolder.subtext4.setText("...");
+            } else {
+                viewHolder.subtext4.setText(card.getSubtext4());
+            }
 
             int imageResource = mContext.getResources().getIdentifier(card.getIconResource(), null, mContext.getPackageName());
             Drawable image = mContext.getResources().getDrawable(imageResource);

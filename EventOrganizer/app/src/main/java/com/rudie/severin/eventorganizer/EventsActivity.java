@@ -32,27 +32,16 @@ public class EventsActivity extends AppCompatActivity {
         loggy = new SimpleLogger(this);
         cardHolder.passEventsAdapter(eventsAdapter);
 
-//        testArray = new String[] {"first", "second", "third", "fourth", "fifth", "sixth", "seventh",
-//                "eighth", "ninth", "tenth", "eleventh", "12th", "thirteenth"};
-//        testIterater = 0;
-
     }
 
-//    public void tempTest(View view) {
-//
-//        String[] holder = new String[3];
-//
-//        for (int i = 0; i < 3; i++) {
-//            if (testIterater < testArray.length) {
-//                holder[i] = testArray[testIterater];
-//                testIterater++;
-//            } else {
-//                testIterater = 0;
-//            }
-//        }
-//
-//        cardHolder.addEventCard(new EventCard(holder[0], holder[1], holder[2]));
-//
-//    }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            cardHolder.notifyAdaptersDataChanged();
+        } catch (NullPointerException e) {
+            // If this fires before the user reaches the second activity, it will return a null
+            // pointer exception but will not impact functionality
+        }
+    }
 }

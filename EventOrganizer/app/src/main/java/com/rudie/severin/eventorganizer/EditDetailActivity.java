@@ -129,9 +129,6 @@ public class EditDetailActivity extends AppCompatActivity {
             while (enteredText.size() < 4) {
                 enteredText.add("");
             }
-            if (enteredText.size() > 4) {
-                enteredText.set(3, "...");
-        }
 
             detail.setSubtext1(enteredText.get(0));
             detail.setSubtext2(enteredText.get(1));

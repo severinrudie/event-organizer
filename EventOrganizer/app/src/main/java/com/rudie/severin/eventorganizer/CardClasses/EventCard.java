@@ -79,9 +79,6 @@ public class EventCard extends SuperCard implements Serializable {
         CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
         verifyThatEmptyDetailExists();
 
-        Log.i("EventCard:SEV ", "" + newDetail.getParentEvent());
-        Log.i("EventCard:SEV ", "attachedDetails.size==" + CardHolder.getCurrentEvent().getAttachedDetails().size());
-
         return newDetail;
     }
 
