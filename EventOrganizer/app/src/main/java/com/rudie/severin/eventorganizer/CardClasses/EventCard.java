@@ -23,10 +23,22 @@ public class EventCard extends SuperCard implements Serializable {
     private String mSubtext2;
     public ArrayList<SuperDetailCard> attachedDetails;
 
+
+
     public EventCard(String head, String sub1, String sub2) {
         super(PH.PARAM_EVENT_CARD, head, sub1, sub2);
         attachedDetails = new ArrayList<>();
+
+        //temp
+        Log.i("EventCard:SEV ", "new card created");
+
     }
+
+    public void setDebugName(){
+        this.debugName = "eventy";
+    }
+    //endtemp
+
 
 //  Begin getters & setters
     public ArrayList<SuperDetailCard> getAttachedDetails() {

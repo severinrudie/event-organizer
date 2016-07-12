@@ -37,7 +37,9 @@ public class DetailsAdapter extends BaseAdapter {
         logger = new SimpleLogger("DetailsAdapter");
     }
 
-
+    public void setDetailCards(ArrayList<SuperDetailCard> mDetailCards) {
+        this.mDetailCards = mDetailCards;
+    }
 
     @Override
     public int getCount() {
@@ -121,7 +123,6 @@ public class DetailsAdapter extends BaseAdapter {
                 Drawable primaryBackground = mContext.getResources().getDrawable(R.drawable.black_border);
                 viewHolder.linearLayout.setBackground(primaryBackground);
             }
-
             viewHolder.header.setText(card.getHeader());
             viewHolder.subtext1.setText(card.getSubtext1());
             viewHolder.subtext2.setText(card.getSubtext2());
@@ -131,7 +132,6 @@ public class DetailsAdapter extends BaseAdapter {
             int imageResource = mContext.getResources().getIdentifier(card.getIconResource(), null, mContext.getPackageName());
             Drawable image = mContext.getResources().getDrawable(imageResource);
             viewHolder.icon.setImageDrawable(image);
-
         }
     }
 

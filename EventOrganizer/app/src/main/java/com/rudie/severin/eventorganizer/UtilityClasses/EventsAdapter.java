@@ -140,6 +140,13 @@ public class EventsAdapter extends BaseAdapter {
                     bundle.putSerializable(PH.PARAM_INTENT_CARD, card);
                     bundle.putSerializable(PH.PARAM_INTENT_CARDHOLDER, cardHolder);
 
+                    //temp
+                    EventCard eventCard2 = (EventCard) card;
+                    Log.i("EventsAdapter:SEV ", "detailsize:" + eventCard2.attachedDetails.size());
+                    Log.i("EventsAdapter:SEV ", "cardholder.eventholder:" + cardHolder.getEventHolder().size());
+                    Log.i("DetailsActivity:SEV ", "eventName:" + eventCard2.debugName);
+                    //endtemp
+
                     Intent intent = new Intent(mContext, DetailsActivity.class);
                     intent.putExtras(bundle);
                     mContext.startActivity(intent);

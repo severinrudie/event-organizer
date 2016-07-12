@@ -3,6 +3,7 @@ package com.rudie.severin.eventorganizer;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.GridView;
 
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
@@ -48,6 +49,12 @@ public class DetailsActivity extends AppCompatActivity {
         loggy = new SimpleLogger("DetailsActivity:" + currentEvent.getType());
         cardHolder.passDetailsAdapter(mDetailsAdapter);
         mDetailsAdapter.notifyDataSetChanged();
+
+        //temp
+        Log.i("DetailsActivity:SEV ", "detailsize:" + currentEvent.attachedDetails.size());
+        Log.i("DetailsActivity:SEV ", "cardholder.eventholder:" + cardHolder.getEventHolder().size());
+        Log.i("DetailsActivity:SEV ", "eventName:" + currentEvent.debugName);
+        //endtemp
 
     }
 

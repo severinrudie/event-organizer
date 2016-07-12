@@ -81,7 +81,11 @@ public class EditDetailActivity extends AppCompatActivity {
         String detailType = null;
 
         if (spinText.equals("People Attending")) {
-            Log.i("EditDetailActivity: ", "savebutton -> people attending");
+            //temp
+            Log.i("EditDetailActivity:SEV ", "detailsize:" + parentEvent.attachedDetails.size());
+            Log.i("EditDetailActivity:SEV ", "eventName:" + parentEvent.debugName);
+            parentEvent.setDebugName();
+            //endtemp
             detailType = PH.PARAM_PEOPLE_DETAIL_CARD;
             parentEvent.addPeopleDetailCard("there", "person", "hi", "hello");
         } else if (spinText.equals("Event Location")) {
@@ -98,6 +102,6 @@ public class EditDetailActivity extends AppCompatActivity {
         parentEvent.attachedDetails.remove(currentDetail);
         parentEvent.verifyThatEmptyDetailExists();
 
-        cancelButton();
+//        cancelButton();
     }
 }
