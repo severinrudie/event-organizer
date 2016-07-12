@@ -16,10 +16,6 @@ public abstract class SuperCard implements Serializable {
     private String mSubtext1;
     private String mSubtext2;
 
-    //temp
-    public String debugName;
-    //temp
-
     public SuperCard(String type, String head, String sub1, String sub2) {
         setHeader(head);
         setType(type);

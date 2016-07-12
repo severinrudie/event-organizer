@@ -2,6 +2,7 @@ package com.rudie.severin.eventorganizer;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
@@ -13,7 +14,7 @@ public class EventsActivity extends AppCompatActivity {
     ListView mEventListView;
     EventsAdapter eventsAdapter;
     SimpleLogger loggy;
-    CardHolder cardHolder;
+    CardHolder cardHolder = null;
 
     String[] testArray;
     int testIterater;
@@ -23,7 +24,10 @@ public class EventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        cardHolder = new CardHolder();
+        if (cardHolder == null) {
+            cardHolder = new CardHolder();
+            Log.i("EventsActivity:SEV ", "creating new cardholder");
+        }
         mEventListView = (ListView) findViewById(R.id.eventsListView);
 
         eventsAdapter = new EventsAdapter(this, cardHolder);

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.rudie.severin.eventorganizer.DetailsActivity;
 import com.rudie.severin.eventorganizer.R;
+import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.DetailsAdapter;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 import com.rudie.severin.eventorganizer.UtilityClasses.SimpleLogger;
@@ -17,7 +18,8 @@ import java.util.logging.Logger;
  */
 
 // EventCard holds information about Events, displayed on EventsActivity (the launch activity)
-public class EventCard extends SuperCard implements Serializable {
+public class EventCard extends SuperCard  {
+    // implements serializable
 
     private String mSubtext1;
     private String mSubtext2;
@@ -28,17 +30,7 @@ public class EventCard extends SuperCard implements Serializable {
     public EventCard(String head, String sub1, String sub2) {
         super(PH.PARAM_EVENT_CARD, head, sub1, sub2);
         attachedDetails = new ArrayList<>();
-
-        //temp
-        Log.i("EventCard:SEV ", "new card created");
-
     }
-
-    public void setDebugName(){
-        this.debugName = "eventy";
-    }
-    //endtemp
-
 
 //  Begin getters & setters
     public ArrayList<SuperDetailCard> getAttachedDetails() {
@@ -48,28 +40,32 @@ public class EventCard extends SuperCard implements Serializable {
 
 
     private void addEmptyDetailCard() {
-        SuperDetailCard newDetail = new EmptyDetailCard(this);
-        attachedDetails.add(newDetail);
-        Log.i("EventCard: ", "" + newDetail.getParentEvent());
+        SuperDetailCard newDetail = new EmptyDetailCard(CardHolder.getCurrentEvent());
+        CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
+        Log.i("EventCard:SEV ", "" + CardHolder.getCurrentEvent());
+        Log.i("EventCard:SEV ", "attachedDetails.size==" + CardHolder.getCurrentEvent().getAttachedDetails().size());
+
     }
 
     public void verifyThatEmptyDetailExists() {
         boolean noEmpty = true;
         for (SuperDetailCard card : attachedDetails) {
-            if (card.getType() == PH.PARAM_EMPTY_DETAIL_CARD) {
-                noEmpty = false;
-                return;
+            Log.i("EventCard:SEV ", "card.type==" + card.getType());
+            if (card.getType().equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
+                attachedDetails.remove(card);
             }
         }
-        if (noEmpty) {
             addEmptyDetailCard();
-        }
     }
 
     public void addPeopleDetailCard(String sub1, String sub2, String sub3,
                                     String sub4) {
-        PeopleDetailCard newDetail = new PeopleDetailCard(this, sub1, sub2, sub3, sub4);
-        attachedDetails.add(newDetail);
+        PeopleDetailCard newDetail = new PeopleDetailCard(CardHolder.getCurrentEvent(), sub1, sub2, sub3, sub4);
+        CardHolder.getCurrentEvent().attachedDetails.add(newDetail);
+        verifyThatEmptyDetailExists();
+
+        Log.i("EventCard:SEV ", "" + newDetail.getParentEvent());
+        Log.i("EventCard:SEV ", "attachedDetails.size==" + CardHolder.getCurrentEvent().getAttachedDetails().size());
     }
 
 }

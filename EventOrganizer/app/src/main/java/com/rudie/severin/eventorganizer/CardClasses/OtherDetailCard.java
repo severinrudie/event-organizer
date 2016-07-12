@@ -7,6 +7,7 @@ package com.rudie.severin.eventorganizer.CardClasses;
  *  Coding is so cool.
  */
 
+import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class OtherDetailCard extends SuperDetailCard implements Serializable {
 
     public OtherDetailCard(EventCard event, String sub1, String sub2, String sub3, String sub4) {
-        super(event, PH.PARAM_OTHER_DETAIL_CARD, "Other", sub1, sub2, sub3, sub4);
+        super(CardHolder.getCurrentEvent(), PH.PARAM_OTHER_DETAIL_CARD, "Other", sub1, sub2, sub3, sub4);
 //        setIconResource("@drawable/ic_open_in_new_black_24dp");
     }
 }

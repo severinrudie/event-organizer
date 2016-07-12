@@ -21,7 +21,6 @@ public class DetailsActivity extends AppCompatActivity {
     DetailsAdapter mDetailsAdapter;
     SimpleLogger loggy;
     CardHolder cardHolder;
-    EventCard currentEvent;
     Context mContext;
 
     @Override
@@ -30,33 +29,33 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         mContext = this.getApplicationContext();
-        Bundle extras = getIntent().getExtras();
-        currentEvent = null;
-        cardHolder = null;
 
-        if (extras != null) {
-            currentEvent = (EventCard) extras.getSerializable(PH.PARAM_INTENT_CARD);
-            cardHolder = (CardHolder) extras.getSerializable(PH.PARAM_INTENT_CARDHOLDER);
-        }
-        currentEvent.verifyThatEmptyDetailExists();
+        cardHolder = CardHolder.getInstance();;
+        CardHolder.getCurrentEvent().verifyThatEmptyDetailExists();
 
-        ArrayList<SuperDetailCard> eventDetails = currentEvent.getAttachedDetails();
+        ArrayList<SuperDetailCard> eventDetails = CardHolder.getCurrentEvent().getAttachedDetails();
         mGridView = (GridView) findViewById(R.id.detailsGridView);
         mDetailsAdapter = new DetailsAdapter(mContext, eventDetails);
         if (mGridView != null) {
             mGridView.setAdapter(mDetailsAdapter);
         }
-        loggy = new SimpleLogger("DetailsActivity:" + currentEvent.getType());
+        loggy = new SimpleLogger("DetailsActivity:" + CardHolder.getCurrentEvent().getType());
         cardHolder.passDetailsAdapter(mDetailsAdapter);
-        mDetailsAdapter.notifyDataSetChanged();
 
         //temp
-        Log.i("DetailsActivity:SEV ", "detailsize:" + currentEvent.attachedDetails.size());
-        Log.i("DetailsActivity:SEV ", "cardholder.eventholder:" + cardHolder.getEventHolder().size());
-        Log.i("DetailsActivity:SEV ", "eventName:" + currentEvent.debugName);
+        Log.i("DetailsActivity:SEVcre ", "detailsize:" + CardHolder.getCurrentEvent().attachedDetails.size());
+        Log.i("DetailsActivity:SEVcre ", "cardholder.eventholder:" + cardHolder.getEventHolder().size());
+//        Log.i("DetailsActivity:SEV ", "eventName:" + currentEvent.debugName);
         //endtemp
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("DetailsActivity:SEVres ", "detailsize:" + CardHolder.getCurrentEvent().attachedDetails.size());
+        Log.i("DetailsActivity:SEVres ", "cardholder.eventholder:" + cardHolder.getEventHolder().size());
+        mDetailsAdapter.notifyDataSetChanged();
+        Log.i("DetailsActivity:SEVres ", "currentEvent:" + CardHolder.getCurrentEvent());
+    }
 }

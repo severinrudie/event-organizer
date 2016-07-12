@@ -7,6 +7,7 @@ package com.rudie.severin.eventorganizer.CardClasses;
  *  Coding is so cool.
  */
 
+import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class LocationDetailCard extends SuperDetailCard implements Serializable {
 
     public LocationDetailCard(EventCard event, String sub1, String sub2, String sub3) {
-        super(event, PH.PARAM_LOCATION_DETAIL_CARD, "Location", sub1, sub2, sub3, "");
+        super(CardHolder.getCurrentEvent(), PH.PARAM_LOCATION_DETAIL_CARD, "Location", sub1, sub2, sub3, "");
 //        setIconResource("@drawable/ic_directions_black_24dp");
     }
 }

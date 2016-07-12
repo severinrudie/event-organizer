@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
+import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 
 public class EditDetailActivity extends AppCompatActivity {
@@ -66,6 +67,12 @@ public class EditDetailActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("EdtDtlActv:SEVres ", "currentEvent:" + CardHolder.currentEvent);
+    }
+
     private void cancelButton() {
         this.finish();
     }
@@ -82,12 +89,13 @@ public class EditDetailActivity extends AppCompatActivity {
 
         if (spinText.equals("People Attending")) {
             //temp
-            Log.i("EditDetailActivity:SEV ", "detailsize:" + parentEvent.attachedDetails.size());
-            Log.i("EditDetailActivity:SEV ", "eventName:" + parentEvent.debugName);
-            parentEvent.setDebugName();
+            Log.i("EditDetailActivity:SEV ", "detailsize:" + CardHolder.getCurrentEvent().attachedDetails.size());
+//            Log.i("EditDetailActivity:SEV ", "eventName:" + parentEvent.debugName);
+//            parentEvent.setDebugName();
             //endtemp
             detailType = PH.PARAM_PEOPLE_DETAIL_CARD;
             parentEvent.addPeopleDetailCard("there", "person", "hi", "hello");
+            Log.i("EdtDtlActv:SEVres ", "currentEvent:" + CardHolder.currentEvent);
         } else if (spinText.equals("Event Location")) {
             detailType = PH.PARAM_LOCATION_DETAIL_CARD;
         } else if (spinText.equals("Event Time")) {

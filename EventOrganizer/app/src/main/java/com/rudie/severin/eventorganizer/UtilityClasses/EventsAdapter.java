@@ -136,19 +136,22 @@ public class EventsAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
 
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(PH.PARAM_INTENT_CARD, card);
-                    bundle.putSerializable(PH.PARAM_INTENT_CARDHOLDER, cardHolder);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable(PH.PARAM_INTENT_CARD, card);
+//                    bundle.putSerializable(PH.PARAM_INTENT_CARDHOLDER, cardHolder);
+
+                    EventCard eventCard = (EventCard) card;
+                    CardHolder.setCurrentEvent(eventCard);
 
                     //temp
                     EventCard eventCard2 = (EventCard) card;
                     Log.i("EventsAdapter:SEV ", "detailsize:" + eventCard2.attachedDetails.size());
                     Log.i("EventsAdapter:SEV ", "cardholder.eventholder:" + cardHolder.getEventHolder().size());
-                    Log.i("DetailsActivity:SEV ", "eventName:" + eventCard2.debugName);
+//                    Log.i("DetailsActivity:SEV ", "eventName:" + eventCard2.debugName);
                     //endtemp
 
                     Intent intent = new Intent(mContext, DetailsActivity.class);
-                    intent.putExtras(bundle);
+//                    intent.putExtras(bundle);
                     mContext.startActivity(intent);
                 }
             });
