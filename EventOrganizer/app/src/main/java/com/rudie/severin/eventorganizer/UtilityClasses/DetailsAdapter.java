@@ -12,12 +12,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.rudie.severin.eventorganizer.CardClasses.EmptyDetailCard;
-import com.rudie.severin.eventorganizer.CardClasses.EmptyEventCard;
 import com.rudie.severin.eventorganizer.CardClasses.EventCard;
-import com.rudie.severin.eventorganizer.CardClasses.PeopleDetailCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
-import com.rudie.severin.eventorganizer.DetailsActivity;
 import com.rudie.severin.eventorganizer.EditDetailActivity;
 import com.rudie.severin.eventorganizer.R;
 
@@ -39,8 +35,9 @@ public class DetailsAdapter extends BaseAdapter {
         this.mContext = mContext;
         this.mDetailCards = detailCards;
         logger = new SimpleLogger("DetailsAdapter");
-//        cardHolder = holder;
     }
+
+
 
     @Override
     public int getCount() {
@@ -65,7 +62,7 @@ public class DetailsAdapter extends BaseAdapter {
         String type = mDetailCards.get(position).getType();
 
         SuperDetailCard card = mDetailCards.get(position);
-        EventCard parentEvent = card.getLinkedEvent();
+        EventCard parentEvent = card.getParentEvent();
 
         if (type == null) {
             logger.debug("Type == null. Position == " + position);

@@ -47,6 +47,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
         loggy = new SimpleLogger("DetailsActivity:" + currentEvent.getType());
         cardHolder.passDetailsAdapter(mDetailsAdapter);
+        mDetailsAdapter.notifyDataSetChanged();
 
     }
 

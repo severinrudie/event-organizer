@@ -21,7 +21,7 @@ public class EventCard extends SuperCard implements Serializable {
 
     private String mSubtext1;
     private String mSubtext2;
-    private ArrayList<SuperDetailCard> attachedDetails;
+    public ArrayList<SuperDetailCard> attachedDetails;
 
     public EventCard(String head, String sub1, String sub2) {
         super(PH.PARAM_EVENT_CARD, head, sub1, sub2);
@@ -35,16 +35,13 @@ public class EventCard extends SuperCard implements Serializable {
 //  End getters & setters
 
 
-    public void addEmptyDetailCard() {
-
+    private void addEmptyDetailCard() {
         SuperDetailCard newDetail = new EmptyDetailCard(this);
         attachedDetails.add(newDetail);
-
-        Log.i("EventCard: ", "empty detail card added");
+        Log.i("EventCard: ", "" + newDetail.getParentEvent());
     }
 
     public void verifyThatEmptyDetailExists() {
-
         boolean noEmpty = true;
         for (SuperDetailCard card : attachedDetails) {
             if (card.getType() == PH.PARAM_EMPTY_DETAIL_CARD) {
@@ -55,6 +52,12 @@ public class EventCard extends SuperCard implements Serializable {
         if (noEmpty) {
             addEmptyDetailCard();
         }
+    }
+
+    public void addPeopleDetailCard(String sub1, String sub2, String sub3,
+                                    String sub4) {
+        PeopleDetailCard newDetail = new PeopleDetailCard(this, sub1, sub2, sub3, sub4);
+        attachedDetails.add(newDetail);
     }
 
 }

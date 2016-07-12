@@ -38,6 +38,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         super(type, head, sub1, sub2);
         setSubtext3("");
         setSubtext4("");
+        this.linkedEvent = event;
     }
 
 // Begin getters & setters
@@ -101,7 +102,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         return enteredText;
     }
 
-    public EventCard getLinkedEvent() {
+    public EventCard getParentEvent() {
         return linkedEvent;
     }
 //  End getters & setters

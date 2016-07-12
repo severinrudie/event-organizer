@@ -8,7 +8,7 @@ import android.util.Log;
  */
 public class SimpleLogger {
 
-    String parentName;
+    transient String parentName;
 
     public SimpleLogger(Context context){
         this.parentName = context.getClass().getSimpleName();
