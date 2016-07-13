@@ -22,7 +22,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
     private String mSubtext3;
     private String mSubtext4;
     private String mIconResource;
-    private ArrayList<String> enteredText;
+    private ArrayList<String> enteredText, displayText;
     private EventCard linkedEvent;
 
     public SuperDetailCard(EventCard event, String type, String head, String sub1, String sub2, String sub3, String sub4) {
@@ -30,6 +30,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         setSubtext3(sub3);
         setSubtext4(sub4);
         this.enteredText = new ArrayList<>();
+        this.displayText = new ArrayList<>();
         this.linkedEvent = CardHolder.getCurrentEvent();
         setIconResource("@drawable/ic_open_in_new_black_24dp");
     }
@@ -40,6 +41,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         setSubtext3("");
         setSubtext4("");
         this.enteredText = new ArrayList<>();
+        this.displayText = new ArrayList<>();
         this.linkedEvent = CardHolder.getCurrentEvent();
     }
 
@@ -104,8 +106,11 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         return enteredText;
     }
 
-    public void setEnteredText(ArrayList<String> enteredText) {
+    public ArrayList<String> getDisplayText() { return displayText;}
+
+    public void setEnteredText(ArrayList<String> enteredText, ArrayList<String> displayText) {
         this.enteredText = enteredText;
+        this.displayText = displayText;
     }
 
     public EventCard getParentEvent() {

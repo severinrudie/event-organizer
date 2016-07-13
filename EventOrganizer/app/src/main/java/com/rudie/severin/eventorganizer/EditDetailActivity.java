@@ -94,37 +94,38 @@ public class EditDetailActivity extends AppCompatActivity {
     private void saveButton() {
         String spinText = spinner.getSelectedItem().toString();
         ArrayList<String> enteredText = collectText();
-        ArrayList<String> displayText = enteredText;
+        ArrayList<String> displayText = new ArrayList<>();
+        displayText.addAll(enteredText);
         displayText = padToFour(displayText);
 
         if (spinText.equals("People Attending")) {
             displayText = setEllipsis(displayText);
             PeopleDetailCard newCard = CardHolder.getCurrentEvent().addPeopleDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
-            newCard.setEnteredText(displayText);
+            newCard.setEnteredText(enteredText, displayText);
         } else if (spinText.equals("Event Location")) {
             LocationDetailCard newCard = CardHolder.getCurrentEvent().addLocationDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2));
-            newCard.setEnteredText(displayText);
+            newCard.setEnteredText(enteredText, displayText);
         } else if (spinText.equals("Event Time")) {
             TimeDetailCard newCard = CardHolder.getCurrentEvent().addTimeDetailCard(displayText.get(0),
                     displayText.get(1));
-            newCard.setEnteredText(displayText);
+            newCard.setEnteredText(enteredText, displayText);
         } else if (spinText.equals("Food")) {
             displayText = setEllipsis(displayText);
             FoodDetailCard newCard = CardHolder.getCurrentEvent().addFoodDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
-            newCard.setEnteredText(displayText);
+            newCard.setEnteredText(enteredText, displayText);
         } else if (spinText.equals("Transportation")) {
             displayText = setEllipsis(displayText);
             TransitDetailCard newCard = CardHolder.getCurrentEvent().addTransitDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
-            newCard.setEnteredText(displayText);
+            newCard.setEnteredText(enteredText, displayText);
         } else if (spinText.equals("Other")) {
             displayText = setEllipsis(displayText);
             OtherDetailCard newCard = CardHolder.getCurrentEvent().addOtherDetailCard(displayText.get(0),
                     displayText.get(1), displayText.get(2), displayText.get(3));
-            newCard.setEnteredText(displayText);
+            newCard.setEnteredText(enteredText, displayText);
         }
         CardHolder cardHolder = CardHolder.getInstance();
         cardHolder.getCurrentEvent().attachedDetails.remove(cardHolder.getCurrentDetail());

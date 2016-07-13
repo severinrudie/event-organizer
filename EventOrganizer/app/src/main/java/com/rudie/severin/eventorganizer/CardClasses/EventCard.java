@@ -120,15 +120,15 @@ public class EventCard extends SuperCard implements Serializable {
         this.setSubtext2("");
 //        int cardsFound = 0;
         //                      people, location, time, food, transit, other
-        boolean[] containsType = {false, false, false, false, false, false};
+//        boolean[] containsType = {false, false, false, false, false, false};
 
         // if the current detail contains text, and is of a valid type, continue
         for (int i = 0; i < attachedDetails.size(); i++) {
-            if (attachedDetails.get(i).getEnteredText().size() > 0) {
+            if (attachedDetails.get(i).getDisplayText().size() > 0) {
                 if (attachedDetails.get(i).getType().equals(PH.PARAM_LOCATION_DETAIL_CARD)) {
-                    setSubtext1(attachedDetails.get(i).getEnteredText().get(0));
+                    setSubtext1(attachedDetails.get(i).getDisplayText().get(0));
                 } else if (attachedDetails.get(i).getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
-                    setSubtext2(attachedDetails.get(i).getEnteredText().get(0));
+                    setSubtext2(attachedDetails.get(i).getDisplayText().get(0));
                 }
             }
         }
