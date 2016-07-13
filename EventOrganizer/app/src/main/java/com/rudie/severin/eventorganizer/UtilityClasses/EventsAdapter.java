@@ -115,8 +115,16 @@ public class EventsAdapter extends BaseAdapter {
                 String sub1 = card.getSubtext1();
                 String sub2 = card.getSubtext2();
 
-                viewHolder.subtext1.setText(sub1);
-                viewHolder.subtext2.setText(sub2);
+                if (sub1.equals("")){
+                    viewHolder.subtext1.setText("Location: TBD");
+                } else {
+                    viewHolder.subtext1.setText("Location: " + sub1);
+                }
+                if (sub2.equals("")){
+                    viewHolder.subtext2.setText("Time: TBD");
+                } else {
+                    viewHolder.subtext2.setText("Time: " + sub2);
+                }
                 Drawable primaryBackground = mContext.getResources().getDrawable(R.drawable.black_border);
                 viewHolder.linearLayout.setBackground(primaryBackground);
             } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {

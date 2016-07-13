@@ -115,80 +115,49 @@ public class EventCard extends SuperCard implements Serializable {
     }
 
     public void populateSubtext() {
-        int cardsFound = 0;
+        // these are reset to prevent deleted details from remaining on the event preview
+        this.setSubtext1("");
+        this.setSubtext2("");
+//        int cardsFound = 0;
         //                      people, location, time, food, transit, other
         boolean[] containsType = {false, false, false, false, false, false};
 
         // if the current detail contains text, and is of a valid type, continue
         for (int i = 0; i < attachedDetails.size(); i++) {
             if (attachedDetails.get(i).getEnteredText().size() > 0) {
-//                if (attachedDetails.get(i).getType().equals(PH.PARAM_PEOPLE_DETAIL_CARD)) {
-//                    containsType[0] = true;
-//                    cardsFound++;
-//                    continue;
-//                } else
                 if (attachedDetails.get(i).getType().equals(PH.PARAM_LOCATION_DETAIL_CARD)) {
-                    containsType[1] = true;
-                    cardsFound++;
-                    continue;
+                    setSubtext1(attachedDetails.get(i).getEnteredText().get(0));
                 } else if (attachedDetails.get(i).getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
-                    containsType[2] = true;
-                    cardsFound++;
-                    continue;
+                    setSubtext2(attachedDetails.get(i).getEnteredText().get(0));
                 }
-//                else if (attachedDetails.get(i).getType().equals(PH.PARAM_FOOD_DETAIL_CARD)) {
-//                    containsType[3] = true;
-//                    cardsFound++;
-//                    continue;
-//                } else if (attachedDetails.get(i).getType().equals(PH.PARAM_TRANSIT_DETAIL_CARD)) {
-//                    containsType[4] = true;
-//                    cardsFound++;
-//                    continue;
-//                } else if (attachedDetails.get(i).getType().equals(PH.PARAM_OTHER_DETAIL_CARD)) {
-//                    containsType[5] = true;
-//                    cardsFound++;
-//                    continue;
+            }
+        }
+    }
+
+//    // selects which text to display first from location and time
+//    private String pickSubtext(boolean[] boolArray) {
+//        //         people, location, time, food, transit, other
+//
+//        if (boolArray[1] && (lastUsed == null || !(lastUsed.equals(PH.PARAM_LOCATION_DETAIL_CARD)))){
+//            //location
+//            for (SuperDetailCard detail : attachedDetails) {
+//                if (detail.getType().equals(PH.PARAM_LOCATION_DETAIL_CARD)) {
+//                    lastUsed = PH.PARAM_LOCATION_DETAIL_CARD;
+//                    return("Location: " + detail.getEnteredText().get(0));
 //                }
-            }
-            lastUsed = null;
-            if (cardsFound > 0) {
-                setSubtext1(pickSubtext(containsType));
-                cardsFound--;
-            } else {
-                setSubtext1("");
-            }
-            if (cardsFound > 0) {
-                setSubtext2(pickSubtext(containsType));
-                cardsFound--;
-            } else {
-                setSubtext2("");
-            }
-        }
-    }
-
-    // selects which text to display first from location and time
-    private String pickSubtext(boolean[] boolArray) {
-        //         people, location, time, food, transit, other
-
-        if (boolArray[1] && (lastUsed == null || !(lastUsed.equals(PH.PARAM_LOCATION_DETAIL_CARD)))){
-            //location
-            for (SuperDetailCard detail : attachedDetails) {
-                if (detail.getType().equals(PH.PARAM_LOCATION_DETAIL_CARD)) {
-                    lastUsed = PH.PARAM_LOCATION_DETAIL_CARD;
-                    return(detail.getEnteredText().get(0));
-                }
-            }
-        } else if (boolArray[2] && (lastUsed == null || !(lastUsed.equals(PH.PARAM_TIME_DETAIL_CARD)))){
-            //time
-            for (SuperDetailCard detail : attachedDetails) {
-                if (detail.getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
-                    lastUsed = PH.PARAM_TIME_DETAIL_CARD;
-                    return(detail.getEnteredText().get(0));
-                }
-            }
-        }
-        return null;
-    }
+//            }
+//        }
+//        if (boolArray[2] && (lastUsed == null || !(lastUsed.equals(PH.PARAM_TIME_DETAIL_CARD)))){
+//            //time
+//            for (SuperDetailCard detail : attachedDetails) {
+//                if (detail.getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
+//                    lastUsed = PH.PARAM_TIME_DETAIL_CARD;
+//                    return("Time: " + detail.getEnteredText().get(0));
+//                }
+//            }
+//        }
+//        return null;
+//    }
 
 
 }
