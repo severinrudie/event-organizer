@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +8,44 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rudie.severin.eventorganizer.EditDetailActivity"
+    android:orientation="vertical"
     android:gravity="center"
-    android:background="#303030">
+    android:background="#fafafa">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:minHeight="75dp">
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_weight="1"
+            android:background="@drawable/black_border_accent"
+            android:id="@+id/EDIT_DETAIL_BUTTON_SAVE" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_weight="1"
+            android:background="@drawable/black_border_accent"
+            android:id="@+id/EDIT_DETAIL_BUTTON_CANCEL" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_weight="1"
+            android:background="@drawable/black_border_accent"
+            android:id="@+id/EDIT_DETAIL_BUTTON_DELETE" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -26,16 +62,18 @@
             android:layout_height="match_parent"
             android:layout_margin="-5dp"
             android:id="@+id/PARAM_ID_DETAIL_OVERALL"
-            android:layout_weight="1">
+            android:layout_weight="5">
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:entries="@array/EditDetailsSpinner"
-                android:background="@drawable/black_border_accent"
                 android:prompt="@string/spinner_prompt"
                 android:id="@+id/EDIT_DETAIL_SPINNER"
+                android:background="@drawable/black_border"
+
                 />
+
 
             <EditText
                 style="@style/primaryText"
@@ -130,43 +168,10 @@
                 android:id="@+id/EDIT_DETAIL_EDITTEXT8"
                 android:singleLine="true" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom">
-
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Save"
-                    android:layout_weight="1"
-                    android:background="@drawable/black_border_accent"
-                    android:id="@+id/EDIT_DETAIL_BUTTON_SAVE" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Cancel"
-                    android:layout_weight="1"
-                    android:background="@drawable/black_border_accent"
-                    android:id="@+id/EDIT_DETAIL_BUTTON_CANCEL" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Delete"
-                    android:layout_weight="1"
-                    android:background="@drawable/black_border_accent"
-                    android:id="@+id/EDIT_DETAIL_BUTTON_DELETE" />
-                
-            </LinearLayout>
-
         </LinearLayout>
 
     </FrameLayout>
 
-</RelativeLayout>
+</LinearLayout>
 
 
