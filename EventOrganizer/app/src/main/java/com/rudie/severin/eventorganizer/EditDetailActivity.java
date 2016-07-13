@@ -187,6 +187,7 @@ public class EditDetailActivity extends AppCompatActivity {
 
     private void deleteButton() {
         CardHolder.getCurrentEvent().attachedDetails.remove(CardHolder.getCurrentDetail());
+        CardHolder.getCurrentEvent().verifyThatEmptyDetailExists();
         finish();
     }
 }

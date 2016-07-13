@@ -16,8 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailsActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
         <activity android:name=".EditDetailActivity"></activity>
     </application>
 
 </manifest>
+
+    <!--android:windowSoftInputMode="stateHidden"-->
