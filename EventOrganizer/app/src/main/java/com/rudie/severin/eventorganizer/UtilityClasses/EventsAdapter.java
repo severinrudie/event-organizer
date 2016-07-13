@@ -112,16 +112,19 @@ public class EventsAdapter extends BaseAdapter {
 
                 viewHolder.header.setText(card.getHeader());
 
-                viewHolder.subtext1.setText(card.getSubtext1());
-                viewHolder.subtext2.setText(card.getSubtext2());
+                String sub1 = card.getSubtext1();
+                String sub2 = card.getSubtext2();
+
+                viewHolder.subtext1.setText(sub1);
+                viewHolder.subtext2.setText(sub2);
                 Drawable primaryBackground = mContext.getResources().getDrawable(R.drawable.black_border);
                 viewHolder.linearLayout.setBackground(primaryBackground);
             } else if (type.equals(PH.PARAM_EMPTY_EVENT_CARD)) {
                 EmptyEventCard card = (EmptyEventCard) mEventCards.get(position);
 
                 viewHolder.header.setText(card.getHeader());
-                viewHolder.subtext1.setText("");
-                viewHolder.subtext2.setText("");
+                viewHolder.subtext1.setText(card.getSubtext1());
+                viewHolder.subtext2.setText(card.getSubtext2());
                 Drawable greyedBackground = mContext.getResources().getDrawable(R.drawable.black_border_greyed);
                 viewHolder.linearLayout.setBackground(greyedBackground);
             }

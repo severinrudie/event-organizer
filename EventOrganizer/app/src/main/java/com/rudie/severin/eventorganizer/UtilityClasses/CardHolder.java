@@ -87,12 +87,16 @@ public class CardHolder implements Serializable {
     public void notifyAdaptersDataChanged() {
         // If this fires before the user reaches the second activity, it will return a null
         // pointer exception but will not impact functionality
-        try {
+//        try {
             mEventsAdapter.notifyDataSetChanged();
-        } catch (Exception e) {}
+//        } catch (Exception e) {
+//            Log.d("CardH:NotifyEventAdap", "" + e.getMessage());
+//        }
         try {
             mDetailsAdapter.notifyDataSetChanged();
-        } catch (Exception f) {}
+        } catch (Exception e) {
+            Log.d("CardH:NotifyDetailAdap", "" + e.getMessage());
+        }
     }
 
     public void notifyEventAdapterOnly() {

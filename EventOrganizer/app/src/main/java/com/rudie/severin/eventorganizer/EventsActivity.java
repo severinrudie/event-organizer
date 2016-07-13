@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.EventsAdapter;
+import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 import com.rudie.severin.eventorganizer.UtilityClasses.SimpleLogger;
 
 import java.io.File;
@@ -32,7 +34,6 @@ public class EventsActivity extends AppCompatActivity {
 
         saveFile = getApplicationContext().getFileStreamPath("CardHolder.ser");
 
-
         if (cardHolder == null) {
             try {
                 cardHolder = loadSerializedObject(saveFile);
@@ -46,7 +47,6 @@ public class EventsActivity extends AppCompatActivity {
             }
         }
 
-
         mEventListView = (ListView) findViewById(R.id.eventsListView);
 
         eventsAdapter = new EventsAdapter(this, cardHolder);
@@ -58,6 +58,15 @@ public class EventsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        for (int i = 0; i < cardHolder.getEventHolder().size(); i++) {
+            if (cardHolder.getEventHolder().get(i).getType().equals(PH.PARAM_EVENT_CARD)) {
+                EventCard thisCard = (EventCard) cardHolder.getEventHolder().get(i);
+                thisCard.populateSubtext();
+
+                System.out.println("");
+            }
+        }
+
         try {
             cardHolder.notifyAdaptersDataChanged();
         } catch (Exception e) {
