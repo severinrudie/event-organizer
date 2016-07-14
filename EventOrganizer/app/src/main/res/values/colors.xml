@@ -4,9 +4,11 @@
     <color name="colorPrimaryGreyed">#99FF5722</color>
     <color name="colorPrimaryDark">#E64A19</color>
     <color name="colorAccent">#FFC986</color>
+    <color name="colorAccentLighter">#ffdeb6</color>
     <color name="lightPrimary">#FFCCBC</color>
     <color name="text">#FAFAFA</color>
-    <color name="edittext_text">#99FAFAFA</color>
+    <color name="edittext_text">#303030</color>
+    <color name="edittext_hint">#88303030</color>
     <color name="secondaryText">#727272</color>
     <color name="frameGreyed">#44ffffff</color>
     <color name="invisible">#00ffffff</color>

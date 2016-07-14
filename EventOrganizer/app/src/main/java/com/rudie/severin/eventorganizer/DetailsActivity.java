@@ -3,7 +3,6 @@ package com.rudie.severin.eventorganizer;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +13,6 @@ import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
 import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.DetailsAdapter;
-import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 import com.rudie.severin.eventorganizer.UtilityClasses.SimpleLogger;
 
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
     SimpleLogger loggy;
     CardHolder cardHolder;
     Context mContext;
-    Button buttonSaveTitle;
+    Button buttonSaveTitle, buttonDelete;
     EditText editTextSaveTitle;
 
     @Override
@@ -42,6 +40,7 @@ public class DetailsActivity extends AppCompatActivity {
         ArrayList<SuperDetailCard> eventDetails = CardHolder.getCurrentEvent().getAttachedDetails();
         mGridView = (GridView) findViewById(R.id.detailsGridView);
         buttonSaveTitle = (Button) findViewById(R.id.buttonNewEventTitle);
+        buttonDelete = (Button) findViewById(R.id.button_delete_event);
         editTextSaveTitle = (EditText) findViewById(R.id.edittextNewEventTitle);
         mDetailsAdapter = new DetailsAdapter(mContext, eventDetails);
         if (mGridView != null) {
@@ -54,6 +53,12 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveEventTitle();
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmDeleteButton();
             }
         });
     }  // end onCreate
@@ -75,4 +80,21 @@ public class DetailsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
         }
     }
+
+    public void confirmDeleteButton() {
+        buttonDelete.setText("Confirm Deletion?");
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteEvent();
+            }
+        });
+    }
+
+    public void deleteEvent() {
+        CardHolder cardHolder = CardHolder.getInstance();
+        cardHolder.getEventHolder().remove(CardHolder.getCurrentEvent());
+        finish();
+    }
+
 }

@@ -6,6 +6,7 @@
     <string name="PARAM_ID_EVENT_SUBTEXT2">PARAM_ID_EVENT_SUBTEXT2</string>
     <string name="title_activity_edit_detail">EditDetailActivity</string>
     <string name="spinner_prompt">Select Detail Type here</string>
+    <string name="edittext_hint"><i>Edit information here</i></string>
 
     <string-array name="EditDetailsSpinner">
         <item>People Attending</item>

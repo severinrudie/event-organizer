@@ -3,14 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rudie.severin.eventorganizer.EditDetailActivity"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="#fafafa">
+    android:gravity="center">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Save"
             android:layout_weight="1"
-            android:background="@drawable/black_border_accent"
+            android:background="@drawable/black_border"
             android:id="@+id/EDIT_DETAIL_BUTTON_SAVE" />
 
         <Button
@@ -34,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="Cancel"
             android:layout_weight="1"
-            android:background="@drawable/black_border_accent"
+            android:background="@drawable/black_border"
             android:id="@+id/EDIT_DETAIL_BUTTON_CANCEL" />
 
         <Button
@@ -42,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="Delete"
             android:layout_weight="1"
-            android:background="@drawable/black_border_accent"
+            android:background="@drawable/black_border"
             android:id="@+id/EDIT_DETAIL_BUTTON_DELETE" />
 
     </LinearLayout>
@@ -51,10 +47,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_margin="4dp"
-        android:background="@drawable/black_border"
         android:layout_gravity="center"
-        android:minWidth="300dp">
+        android:minWidth="300dp"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.4"
+            android:background="@color/colorPrimary"></FrameLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -70,101 +70,105 @@
                 android:entries="@array/EditDetailsSpinner"
                 android:prompt="@string/spinner_prompt"
                 android:id="@+id/EDIT_DETAIL_SPINNER"
-                android:background="@drawable/black_border"
-
+                
                 />
 
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
-                android:textColorHint="@color/edittext_text"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
+                android:textColorHint="@color/edittext_hint"
+                android:textColor="@color/edittext_text"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:minWidth="@dimen/edittext_width" 
-                android:backgroundTint="@color/colorAccent"
+                android:minWidth="@dimen/edittext_width"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT1"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_width="match_parent" />
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
                 android:textColorHint="@color/edittext_text"
+                android:textColor="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
-                android:backgroundTint="@color/colorAccent"
+
                 android:id="@+id/EDIT_DETAIL_EDITTEXT2"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_width="match_parent" />
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
                 android:textColorHint="@color/edittext_text"
+                android:textColor="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
-                android:backgroundTint="@color/colorAccent"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT3"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_width="match_parent" />
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
                 android:textColorHint="@color/edittext_text"
-                android:layout_marginRight="40dp"
+                android:textColor="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
-                android:backgroundTint="@color/colorAccent"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT4"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_width="match_parent" />
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
                 android:textColorHint="@color/edittext_text"
+                android:textColor="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
-                android:backgroundTint="@color/colorAccent"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT5"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_width="match_parent" />
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
                 android:textColorHint="@color/edittext_text"
+                android:textColor="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
-                android:backgroundTint="@color/colorAccent"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT6"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_width="match_parent" />
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
                 android:textColorHint="@color/edittext_text"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="-3dp"
+                android:textColor="@color/edittext_text"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
-                android:backgroundTint="@color/colorAccent"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT7"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_marginTop="-3dp" />
 
             <EditText
-                style="@style/primaryText"
-                android:hint="Edit information here"
+                style="@style/textnoborder"
+                android:hint="@string/edittext_hint"
                 android:textColorHint="@color/edittext_text"
-                android:layout_marginRight="40dp"
+                android:textColor="@color/edittext_text"
                 android:layout_marginTop="-3dp"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorAccent"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT8"
                 android:singleLine="true" />
 

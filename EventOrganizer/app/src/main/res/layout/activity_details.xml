@@ -11,36 +11,59 @@
     tools:mContext="com.rudie.severin.eventorganizer.DetailsActivity">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/empty_with_border">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:layout_width="0dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edittextNewEventTitle"
-            android:hint="Change Event Name Here"
-            android:layout_weight="2" />
+            android:background="@drawable/empty_with_border"
+            android:layout_weight="0">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edittextNewEventTitle"
+                android:hint="Change Event Name Here"
+                android:layout_weight="2" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Save Name"
+                android:background="@drawable/black_border"
+                android:id="@+id/buttonNewEventTitle"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:horizontalSpacing="0dp"
+            android:stretchMode="columnWidth"
+            android:numColumns="2"
+            android:id="@+id/detailsGridView"
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save Name"
+            android:id="@+id/button_delete_event"
+            android:layout_gravity="center_horizontal"
+            android:text="Delete Event"
             android:background="@drawable/black_border"
-            android:id="@+id/buttonNewEventTitle"
-            android:layout_weight="1" />
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_weight="0"/>
+
     </LinearLayout>
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="0dp"
-        android:horizontalSpacing="0dp"
-        android:stretchMode="columnWidth"
-        android:numColumns="2"
-        android:id="@+id/detailsGridView"/>
+
 </LinearLayout>
