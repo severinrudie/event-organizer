@@ -84,7 +84,8 @@
                 android:minWidth="@dimen/edittext_width"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT1"
                 android:singleLine="true"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:inputType="textCapWords" />
 
             <EditText
                 style="@style/textnoborder"
@@ -97,7 +98,8 @@
 
                 android:id="@+id/EDIT_DETAIL_EDITTEXT2"
                 android:singleLine="true"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:inputType="textCapWords" />
 
             <EditText
                 style="@style/textnoborder"
@@ -109,7 +111,8 @@
                 android:minWidth="@dimen/edittext_width"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT3"
                 android:singleLine="true"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:inputType="textCapWords" />
 
             <EditText
                 style="@style/textnoborder"
@@ -121,7 +124,8 @@
                 android:minWidth="@dimen/edittext_width"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT4"
                 android:singleLine="true"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:inputType="textCapWords" />
 
             <EditText
                 style="@style/textnoborder"
@@ -133,7 +137,8 @@
                 android:minWidth="@dimen/edittext_width"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT5"
                 android:singleLine="true"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:inputType="textCapWords" />
 
             <EditText
                 style="@style/textnoborder"
@@ -145,7 +150,8 @@
                 android:minWidth="@dimen/edittext_width"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT6"
                 android:singleLine="true"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:inputType="textCapWords" />
 
             <EditText
                 style="@style/textnoborder"
@@ -157,7 +163,8 @@
                 android:id="@+id/EDIT_DETAIL_EDITTEXT7"
                 android:singleLine="true"
                 android:layout_width="match_parent"
-                android:layout_marginTop="-3dp" />
+                android:layout_marginTop="-3dp"
+                android:inputType="textCapWords" />
 
             <EditText
                 style="@style/textnoborder"
@@ -170,44 +177,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/EDIT_DETAIL_EDITTEXT8"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="textCapWords" />
 
         <!--TimeDetailCard views below, normally hidden-->
 
             <TextView
-                style="@style/textnoborder"
+                style="@style/detailText"
                 android:textColor="@color/black"
                 android:text="No Date Set"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="60dp"
                 android:minWidth="@dimen/edittext_width"
                 android:id="@+id/TIME_EDIT_TEXTVIEW1"
                 android:singleLine="true"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Set Date"
-                android:id="@+id/button_set_date" />
+                android:id="@+id/button_set_date"
+                android:background="@drawable/black_border"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal" />
 
             <TextView
-                style="@style/textnoborder"
+                style="@style/detailText"
                 android:textColor="@color/black"
                 android:text="No Time Set"
-                android:layout_marginTop="-3dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
                 android:minWidth="@dimen/edittext_width"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/TIME_EDIT_TEXTVIEW2"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:gravity="center_horizontal"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Set Time"
-                android:id="@+id/button_set_time" />
+                android:id="@+id/button_set_time"
+                android:background="@drawable/black_border"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal" />
 
 
         </LinearLayout>
