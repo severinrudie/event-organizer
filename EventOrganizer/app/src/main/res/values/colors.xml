@@ -13,4 +13,5 @@
     <color name="frameGreyed">#44ffffff</color>
     <color name="invisible">#00ffffff</color>
     <color name="background">#ffffff</color>
+    <color name="blankGrey">#44fafafa</color>
 </resources>

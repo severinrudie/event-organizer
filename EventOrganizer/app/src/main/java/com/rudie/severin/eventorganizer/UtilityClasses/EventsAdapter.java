@@ -111,6 +111,8 @@ public class EventsAdapter extends BaseAdapter {
                 EventCard card = (EventCard) mEventCards.get(position);
 
                 viewHolder.header.setText(card.getHeader());
+                int color = mContext.getResources().getColor(R.color.blankGrey);
+                viewHolder.header.setBackgroundColor(color);
 
                 String sub1 = card.getSubtext1();
                 String sub2 = card.getSubtext2();
@@ -135,6 +137,9 @@ public class EventsAdapter extends BaseAdapter {
                 viewHolder.subtext2.setText(card.getSubtext2());
                 Drawable greyedBackground = mContext.getResources().getDrawable(R.drawable.black_border_greyed);
                 viewHolder.linearLayout.setBackground(greyedBackground);
+
+//                set background blank in case it's recycling an event card
+                viewHolder.header.setBackgroundColor(00000000);
             }
         }
     }

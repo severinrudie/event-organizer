@@ -14,10 +14,8 @@
             android:layout_margin="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:padding="30dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:id="@+id/PARAM_ID_EVENT_OVERALL">
+            android:id="@+id/PARAM_ID_EVENT_OVERALL"
+            android:paddingBottom="20dp">
 
             <TextView
                 style="@style/primaryText"
@@ -25,18 +23,27 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="24sp"
                 android:text="Header"
-                android:id="@+id/PARAM_ID_EVENT_HEADER"/>
+                android:id="@+id/PARAM_ID_EVENT_HEADER"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:maxHeight="70dp"/>
 
             <TextView
                 style="@style/primaryText"
                 android:text="Subtext1"
                 android:id="@+id/PARAM_ID_EVENT_SUBTEXT1"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                  />
 
             <TextView
                 style="@style/primaryText"
                 android:text="Subtext2"
                 android:id="@+id/PARAM_ID_EVENT_SUBTEXT2"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 />
 
         </LinearLayout>
