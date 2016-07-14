@@ -16,6 +16,6 @@ public class TransitDetailCard extends SuperDetailCard implements Serializable {
 
     public TransitDetailCard(String sub1, String sub2, String sub3, String sub4) {
         super(CardHolder.getCurrentEvent(), PH.PARAM_TRANSIT_DETAIL_CARD, "Transit", sub1, sub2, sub3, sub4);
-//        setIconResource("@drawable/ic_directions_car_black_24dp");
+        setIconResource("@drawable/ic_directions_car_black_24dp");
     }
 }

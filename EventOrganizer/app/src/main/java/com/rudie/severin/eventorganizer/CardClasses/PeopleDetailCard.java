@@ -17,6 +17,6 @@ public class PeopleDetailCard extends SuperDetailCard implements Serializable {
 
     public PeopleDetailCard(String sub1, String sub2, String sub3, String sub4) {
         super(CardHolder.getCurrentEvent(), PH.PARAM_PEOPLE_DETAIL_CARD, "People", sub1, sub2, sub3, sub4);
-//        setIconResource("@drawable/ic_contacts_black_24dp");
+        setIconResource("@drawable/ic_contacts_black_24dp");
     }
 }

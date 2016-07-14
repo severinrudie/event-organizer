@@ -77,7 +77,8 @@
                 android:id="@+id/PARAM_ID_DETAIL_ICON"
                 android:background="@color/frameGreyed"
                 android:layout_marginTop="7dp"
-                android:layout_marginRight="5dp" />
+                android:layout_marginRight="5dp"
+                android:elevation="0dp"/>
 
         </FrameLayout>
 

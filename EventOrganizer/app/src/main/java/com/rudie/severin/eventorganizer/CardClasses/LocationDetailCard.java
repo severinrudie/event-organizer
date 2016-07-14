@@ -16,6 +16,6 @@ public class LocationDetailCard extends SuperDetailCard implements Serializable 
 
     public LocationDetailCard(String sub1, String sub2, String sub3) {
         super(CardHolder.getCurrentEvent(), PH.PARAM_LOCATION_DETAIL_CARD, "Location", sub1, sub2, sub3, "");
-//        setIconResource("@drawable/ic_directions_black_24dp");
+        setIconResource("@drawable/ic_place_black_24dp");
     }
 }

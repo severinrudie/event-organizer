@@ -3,37 +3,54 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="30dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:id="@+id/PARAM_ID_EVENT_OVERALL">
+        android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/primaryText"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="24sp"
-            android:text="Header"
-            android:id="@+id/PARAM_ID_EVENT_HEADER"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="30dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:id="@+id/PARAM_ID_EVENT_OVERALL">
 
-        <TextView
-            style="@style/primaryText"
-            android:text="Subtext1"
-            android:id="@+id/PARAM_ID_EVENT_SUBTEXT1"
-             />
+            <TextView
+                style="@style/primaryText"
+                android:layout_width="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="24sp"
+                android:text="Header"
+                android:id="@+id/PARAM_ID_EVENT_HEADER"/>
 
-        <TextView
-            style="@style/primaryText"
-            android:text="Subtext2"
-            android:id="@+id/PARAM_ID_EVENT_SUBTEXT2"
-            />
-    </LinearLayout>
+            <TextView
+                style="@style/primaryText"
+                android:text="Subtext1"
+                android:id="@+id/PARAM_ID_EVENT_SUBTEXT1"
+                 />
+
+            <TextView
+                style="@style/primaryText"
+                android:text="Subtext2"
+                android:id="@+id/PARAM_ID_EVENT_SUBTEXT2"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="right|bottom"
+            android:src="@drawable/icon"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:elevation="2dp"/>
+    </FrameLayout>
 
 
 </LinearLayout>

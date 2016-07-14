@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rudie.severin.eventorganizer.EditDetailActivity"
     android:orientation="vertical"
     android:gravity="center">
@@ -14,12 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="bottom"
-        android:minHeight="75dp">
+        android:minHeight="75dp"
+        android:background="#303030">
 
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Save"
             android:layout_weight="1"
             android:background="@drawable/black_border"
@@ -27,7 +27,7 @@
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Cancel"
             android:layout_weight="1"
             android:background="@drawable/black_border"
@@ -35,7 +35,7 @@
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Delete"
             android:layout_weight="1"
             android:background="@drawable/black_border"

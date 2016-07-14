@@ -70,7 +70,7 @@ public class EditDetailActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteButton();
+                confirmDeletion();
             }
         });
         setSpinnerDefault();
@@ -183,6 +183,16 @@ public class EditDetailActivity extends AppCompatActivity {
         } else if (type.equals(PH.PARAM_OTHER_DETAIL_CARD)) {
             spinner.setSelection(5);
         }
+    }
+
+    private void confirmDeletion() {
+        deleteButton.setText("Confirm Deletion?");
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteButton();
+            }
+        });
     }
 
     private void deleteButton() {

@@ -118,9 +118,17 @@ public class DetailsAdapter extends BaseAdapter {
             if (type.equals(PH.PARAM_EMPTY_DETAIL_CARD)) {
                 Drawable backgroundGreyed = mContext.getResources().getDrawable(R.drawable.black_border_greyed);
                 viewHolder.linearLayout.setBackground(backgroundGreyed);
+
+                Drawable image = mContext.getResources().getDrawable(R.drawable.ic_note_add_black_24dp);
+                viewHolder.icon.setImageDrawable(image);
             } else {
                 Drawable primaryBackground = mContext.getResources().getDrawable(R.drawable.black_border);
                 viewHolder.linearLayout.setBackground(primaryBackground);
+
+                String name = card.getIconResource();
+                int id = mContext.getResources().getIdentifier(name, "drawable", mContext.getPackageName());
+                Drawable drawable = mContext.getResources().getDrawable(id);
+                viewHolder.icon.setImageDrawable(drawable);
             }
             viewHolder.header.setText(card.getHeader());
             viewHolder.subtext1.setText(card.getSubtext1());
@@ -132,9 +140,9 @@ public class DetailsAdapter extends BaseAdapter {
                 viewHolder.subtext4.setText(card.getSubtext4());
 //            }
 
-            int imageResource = mContext.getResources().getIdentifier(card.getIconResource(), null, mContext.getPackageName());
-            Drawable image = mContext.getResources().getDrawable(imageResource);
-            viewHolder.icon.setImageDrawable(image);
+//            int imageResource = mContext.getResources().getIdentifier(card.getIconResource(), null, mContext.getPackageName());
+//            Drawable image = mContext.getResources().getDrawable(imageResource);
+//            viewHolder.icon.setImageDrawable(image);
         }
     }
 
