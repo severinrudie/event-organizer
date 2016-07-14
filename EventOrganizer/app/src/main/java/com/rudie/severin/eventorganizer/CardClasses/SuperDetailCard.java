@@ -140,12 +140,9 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
 
     public void setTime(String time) {
         this.time = time;
-        if (!(this.date.equals("")) && this.getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
-            enteredText.clear();
-            enteredText.add(getTime() + ", " + getDate());
-        }
     }
 
     //  End getters & setters
+
 
 }

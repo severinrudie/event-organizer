@@ -1,9 +1,14 @@
 package com.rudie.severin.eventorganizer;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -13,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.rudie.severin.eventorganizer.CardClasses.FoodDetailCard;
@@ -30,10 +36,10 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-public class EditDetailActivity extends AppCompatActivity {
+public class EditDetailActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
     Button cancelButton, saveButton, deleteButton, setTime, setDate;
-    EditText editText1, editText2, editText3, editText4, 
+    EditText editText1, editText2, editText3, editText4,
             editText5, editText6, editText7, editText8;
     TextView dateView, timeView;
     List<EditText> editList;
@@ -41,6 +47,7 @@ public class EditDetailActivity extends AppCompatActivity {
     boolean timeDetailIsSet;
     Calendar calendar;
     int year, month, day;
+    static String date, time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +102,8 @@ public class EditDetailActivity extends AppCompatActivity {
 
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-//        showDate(year, month+1, day);
+        date = CardHolder.getCurrentDetail().getDate();
+        time = CardHolder.getCurrentDetail().getTime();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -108,6 +116,7 @@ public class EditDetailActivity extends AppCompatActivity {
                     timeDetailIsSet = false;
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // not used
@@ -118,6 +127,13 @@ public class EditDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setDate();
+            }
+        });
+
+        setTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setTime();
             }
         });
 
@@ -132,7 +148,7 @@ public class EditDetailActivity extends AppCompatActivity {
             }
         }
 
-        if (!(CardHolder.getCurrentDetail().getType().equals(PH.PARAM_TIME_DETAIL_CARD))){
+        if (!(CardHolder.getCurrentDetail().getType().equals(PH.PARAM_TIME_DETAIL_CARD))) {
             removeTimeDetail();
             timeDetailIsSet = false;
         } else {
@@ -162,9 +178,19 @@ public class EditDetailActivity extends AppCompatActivity {
                     displayText.get(1), displayText.get(2));
             newCard.setEnteredText(enteredText, displayText);
         } else if (spinText.equals("Event Time")) {
-            TimeDetailCard newCard = CardHolder.getCurrentEvent().addTimeDetailCard(displayText.get(0),
-                    displayText.get(1));
-            newCard.setEnteredText(enteredText, displayText);
+            if (date.equals("") || time.equals("")) {
+                String message = "Enter date and time before saving";
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                displayText.clear();
+                displayText.add(generateDateTime());
+                enteredText.clear();
+                enteredText.add(time);
+                enteredText.add(date);
+                TimeDetailCard newCard = CardHolder.getCurrentEvent().addTimeDetailCard(time, date);
+                newCard.setEnteredText(enteredText, displayText);
+            }
         } else if (spinText.equals("Food")) {
             displayText = setEllipsis(displayText);
             FoodDetailCard newCard = CardHolder.getCurrentEvent().addFoodDetailCard(displayText.get(0),
@@ -199,10 +225,10 @@ public class EditDetailActivity extends AppCompatActivity {
         ArrayList<String> enteredText = new ArrayList<>();
 
         for (EditText editText : editList) {
-            if (!editText.getText().toString().isEmpty()){
+            if (!editText.getText().toString().isEmpty()) {
                 enteredText.add(editText.getText().toString());
-                }
             }
+        }
         enteredText = padToFour(enteredText);
         detail.setSubtext1(enteredText.get(0));
         detail.setSubtext2(enteredText.get(1));
@@ -211,13 +237,13 @@ public class EditDetailActivity extends AppCompatActivity {
 
         return enteredText;
     }
-    
+
     private ArrayList<String> setEllipsis(ArrayList<String> enteredText) {
         ArrayList<String> displayText = enteredText;
         if (displayText.size() > 4) {
             displayText.set(3, "...");
         }
-        return  (displayText);
+        return (displayText);
     }
 
     private void setSpinnerDefault() {
@@ -258,7 +284,7 @@ public class EditDetailActivity extends AppCompatActivity {
     private void setTimeDetail() {
 
         for (int i = 0; i < editList.size(); i++) {
-                editList.get(i).setVisibility(View.GONE);
+            editList.get(i).setVisibility(View.GONE);
         }
         dateView.setVisibility(View.VISIBLE);
         timeView.setVisibility(View.VISIBLE);
@@ -285,7 +311,6 @@ public class EditDetailActivity extends AppCompatActivity {
 
     @Override
     protected Dialog onCreateDialog(int id) {
-        // TODO Auto-generated method stub
         if (id == 999) {
             return new DatePickerDialog(this, myDateListener, year, month, day);
         }
@@ -295,28 +320,62 @@ public class EditDetailActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            // TODO Auto-generated method stub
-            showDate(arg1, arg2+1, arg3);
-//            finish();
+            showDate(arg1, arg2 + 1, arg3);
         }
     };
 
     private void showDate(int year, int month, int day) {
-        String date = new StringBuilder().append(month).append("/")
+        date = new StringBuilder().append(month).append("/")
                 .append(day).append("/").append(year).toString();
         dateView.setText(date);
-        CardHolder.getCurrentDetail().setDate(date);
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-
 
 //    TimePicker code below
 
+    // calls to show TimePicker dialog
+    public void setTime() {
+        DialogFragment new_fragment = new TimePickerFragment();
+        new_fragment.show(getSupportFragmentManager(), "timePicker");
 
+    }
+
+    public void onTimeSet(TimePicker view, int hour, int minute) {
+        String Hour;
+        // rounds minute down to the nearest 5
+        String displayTime;
+        minute = Math.round(minute / 5) * 5;
+        if (hour > 12) {
+            Hour = String.valueOf(hour - 12);
+        } else {
+            Hour = String.valueOf(hour);
+        }
+
+        // rules for making display text more human readable
+        String Minute = String.valueOf(minute);
+        if (Hour.equals("0")) {
+            Hour = "00";
+        }
+        if (Minute.equals("0")) {
+            Minute = "00";
+        }
+
+        if (hour == 0 && minute == 0) {
+            displayTime = "Midnight";
+        } else if (hour < 12) {
+            String temporary_text = Hour + ":" + Minute + " AM";
+            displayTime = temporary_text;
+        } else if (hour == 12 && minute == 0) {
+            displayTime = "Noon";
+        } else {
+            String temporary_text = Hour + ":" + Minute + " PM";
+            displayTime = temporary_text;
+        }
+        CardHolder.getCurrentDetail().setTime(displayTime);
+        timeView.setText(displayTime);
+        time = displayTime;
+    }
+
+    public String generateDateTime() {
+            return (time + ", " + date);
+    }
 }
