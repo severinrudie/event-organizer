@@ -126,7 +126,13 @@ public class EventCard extends SuperCard implements Serializable {
         for (int i = 0; i < attachedDetails.size(); i++) {
             if (attachedDetails.get(i).getDisplayText().size() > 0) {
                 if (attachedDetails.get(i).getType().equals(PH.PARAM_LOCATION_DETAIL_CARD)) {
-                    setSubtext1(attachedDetails.get(i).getDisplayText().get(0));
+                    if (attachedDetails.get(i).getDisplayText().size() > 1) {
+                        String newText = attachedDetails.get(i).getDisplayText().get(0) + ", "
+                                + attachedDetails.get(i).getDisplayText().get(01);
+                        setSubtext1(newText);
+                    } else {
+                        setSubtext1(attachedDetails.get(i).getDisplayText().get(0));
+                    }
                 } else if (attachedDetails.get(i).getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
                     setSubtext2(attachedDetails.get(i).getDisplayText().get(0));
                 }

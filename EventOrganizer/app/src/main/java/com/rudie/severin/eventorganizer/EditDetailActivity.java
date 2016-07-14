@@ -1,16 +1,11 @@
 package com.rudie.severin.eventorganizer;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EditDetailActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
@@ -44,7 +41,7 @@ public class EditDetailActivity extends AppCompatActivity implements TimePickerD
     TextView dateView, timeView;
     List<EditText> editList;
     Spinner spinner;
-    boolean timeDetailIsSet;
+    boolean timeDetailIsSet, locationDetailIsSet;
     Calendar calendar;
     int year, month, day;
     static String date, time;
@@ -108,13 +105,7 @@ public class EditDetailActivity extends AppCompatActivity implements TimePickerD
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position == 2 && !timeDetailIsSet) {
-                    setTimeDetail();
-                    timeDetailIsSet = true;
-                } else if (position != 2 && timeDetailIsSet) {
-                    removeTimeDetail();
-                    timeDetailIsSet = false;
-                }
+                verifyDetailSelection(position);
             }
 
             @Override
@@ -147,14 +138,7 @@ public class EditDetailActivity extends AppCompatActivity implements TimePickerD
                 editList.get(i).setText(CardHolder.getCurrentDetail().getEnteredText().get(i));
             }
         }
-
-        if (!(CardHolder.getCurrentDetail().getType().equals(PH.PARAM_TIME_DETAIL_CARD))) {
-            removeTimeDetail();
-            timeDetailIsSet = false;
-        } else {
-            setTimeDetail();
-            timeDetailIsSet = true;
-        }
+        verifyDetailSelection();
     }
 
     private void cancelButton() {
@@ -292,9 +276,23 @@ public class EditDetailActivity extends AppCompatActivity implements TimePickerD
         setDate.setVisibility(View.VISIBLE);
     }
 
-    private void removeTimeDetail() {
+    private void removeCustomDetail() {
         for (int i = 0; i < editList.size(); i++) {
             editList.get(i).setVisibility(View.VISIBLE);
+        }
+        dateView.setVisibility(View.GONE);
+        timeView.setVisibility(View.GONE);
+        setTime.setVisibility(View.GONE);
+        setDate.setVisibility(View.GONE);
+    }
+
+    private void setLocationDetail() {
+
+        for (int i = 0; i < 2; i++) {
+            editList.get(i).setVisibility(View.VISIBLE);
+        }
+        for (int i = 2; i < editList.size(); i++) {
+            editList.get(i).setVisibility(View.GONE);
         }
         dateView.setVisibility(View.GONE);
         timeView.setVisibility(View.GONE);
@@ -359,6 +357,10 @@ public class EditDetailActivity extends AppCompatActivity implements TimePickerD
             Minute = "00";
         }
 
+        if (Minute.length() < 2) {
+            Minute = "0" + Minute;
+        }
+
         if (hour == 0 && minute == 0) {
             displayTime = "Midnight";
         } else if (hour < 12) {
@@ -376,6 +378,71 @@ public class EditDetailActivity extends AppCompatActivity implements TimePickerD
     }
 
     public String generateDateTime() {
+        // Regex insanity.  Works, but replaced with lines 360-361
+//        Pattern pattern = Pattern.compile("(\\d+:)(\\d+)(\\s..)");
+//        Matcher matcher = pattern.matcher(time);
+//
+//        if (matcher.find()) {
+//            String found0 = ("Found value: " + matcher.group(0));
+//            String found1 = ("Found value: " + matcher.group(1));
+//            String found2 = ("Found value: " + matcher.group(2));
+//            String found3 = ("Found value: " + matcher.group(3));
+//
+//            String wait = "wait here";
+//        } else {
+//            String noFind = ("nothing found");
+//        }
+//
+//
+//        StringBuilder builder = new StringBuilder(matcher.group(2));
+//        if (matcher.group(2).length() < 2) {
+//            builder.append(matcher.group(2));
+//            builder.replace(builder.length() - 2, builder.length() - 1, "0");
+//            time = matcher.group(1) + builder.toString() + matcher.group(3);
+//        }
             return (time + ", " + date);
+    }
+
+    // overloaded method, accepts a position, or will determine based on card type
+    public void verifyDetailSelection(int position) {
+        if (position == 2 && !timeDetailIsSet) {
+            setTimeDetail();
+            timeDetailIsSet = true;
+        } else if (position != 2 && timeDetailIsSet) {
+            removeCustomDetail();
+            timeDetailIsSet = false;
+        }
+        if (position == 1 && !locationDetailIsSet) {
+            setLocationDetail();
+            locationDetailIsSet = true;
+        } else if (position != 1 && locationDetailIsSet && !timeDetailIsSet) {
+            removeCustomDetail();
+            locationDetailIsSet = false;
+        }
+    }
+
+    // overloaded method, accepts a position, or will determine based on card type
+    public void verifyDetailSelection() {
+        if (!(CardHolder.getCurrentDetail().getType().equals(PH.PARAM_TIME_DETAIL_CARD))) {
+            removeCustomDetail();
+            timeDetailIsSet = false;
+        } else {
+            setTimeDetail();
+            timeDetailIsSet = true;
+        }
+        if (CardHolder.getCurrentDetail().getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
+            setTimeDetail();
+            timeDetailIsSet = true;
+            locationDetailIsSet = false;
+        } else if (CardHolder.getCurrentDetail().getType().equals(PH.PARAM_LOCATION_DETAIL_CARD)) {
+            setLocationDetail();
+            timeDetailIsSet = false;
+            locationDetailIsSet = true;
+        } else {
+            removeCustomDetail();
+            locationDetailIsSet = false;
+            timeDetailIsSet = false;
+        }
+
     }
 }
