@@ -15,11 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"/>
-        <activity android:name=".EditDetailActivity"></activity>
+        <activity
+            android:name=".DetailsActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity android:name=".EditDetailActivity" />
     </application>
 
-</manifest>
-
-    <!--android:windowSoftInputMode="stateHidden"-->
+</manifest> <!-- android:windowSoftInputMode="stateHidden" -->

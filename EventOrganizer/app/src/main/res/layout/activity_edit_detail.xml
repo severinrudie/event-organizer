@@ -172,6 +172,44 @@
                 android:id="@+id/EDIT_DETAIL_EDITTEXT8"
                 android:singleLine="true" />
 
+        <!--TimeDetailCard views below, normally hidden-->
+
+            <TextView
+                style="@style/textnoborder"
+                android:textColor="@color/black"
+                android:text="No Date Set"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:minWidth="@dimen/edittext_width"
+                android:id="@+id/TIME_EDIT_TEXTVIEW1"
+                android:singleLine="true"
+                android:layout_width="match_parent" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Date"
+                android:id="@+id/button_set_date" />
+
+            <TextView
+                style="@style/textnoborder"
+                android:textColor="@color/black"
+                android:text="No Time Set"
+                android:layout_marginTop="-3dp"
+                android:layout_marginLeft="5dp"
+                android:minWidth="@dimen/edittext_width"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/TIME_EDIT_TEXTVIEW2"
+                android:singleLine="true" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Time"
+                android:id="@+id/button_set_time" />
+
+
         </LinearLayout>
 
     </FrameLayout>

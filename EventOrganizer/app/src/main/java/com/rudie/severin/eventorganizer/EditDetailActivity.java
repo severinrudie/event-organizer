@@ -1,12 +1,19 @@
 package com.rudie.severin.eventorganizer;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rudie.severin.eventorganizer.CardClasses.FoodDetailCard;
 import com.rudie.severin.eventorganizer.CardClasses.LocationDetailCard;
@@ -20,17 +27,20 @@ import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class EditDetailActivity extends AppCompatActivity {
 
-    Button cancelButton;
-    Button saveButton;
-    Button deleteButton;
+    Button cancelButton, saveButton, deleteButton, setTime, setDate;
     EditText editText1, editText2, editText3, editText4, 
             editText5, editText6, editText7, editText8;
+    TextView dateView, timeView;
     List<EditText> editList;
     Spinner spinner;
+    boolean timeDetailIsSet;
+    Calendar calendar;
+    int year, month, day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,8 @@ public class EditDetailActivity extends AppCompatActivity {
         cancelButton = (Button) findViewById(R.id.EDIT_DETAIL_BUTTON_CANCEL);
         saveButton = (Button) findViewById(R.id.EDIT_DETAIL_BUTTON_SAVE);
         deleteButton = (Button) findViewById(R.id.EDIT_DETAIL_BUTTON_DELETE);
+        setTime = (Button) findViewById(R.id.button_set_time);
+        setDate = (Button) findViewById(R.id.button_set_date);
         spinner = (Spinner) findViewById(R.id.EDIT_DETAIL_SPINNER);
 
         editText1 = (EditText) findViewById(R.id.EDIT_DETAIL_EDITTEXT1);
@@ -74,16 +86,58 @@ public class EditDetailActivity extends AppCompatActivity {
             }
         });
         setSpinnerDefault();
+
+        dateView = (TextView) findViewById(R.id.TIME_EDIT_TEXTVIEW1);
+        timeView = (TextView) findViewById(R.id.TIME_EDIT_TEXTVIEW2);
+
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+//        showDate(year, month+1, day);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position == 2 && !timeDetailIsSet) {
+                    setTimeDetail();
+                    timeDetailIsSet = true;
+                } else if (position != 2 && timeDetailIsSet) {
+                    removeTimeDetail();
+                    timeDetailIsSet = false;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // not used
+            }
+        });
+
+        setDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDate();
+            }
+        });
+
     }  // end onCreate
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("SEVTEST ", "" + CardHolder.getCurrentDetail().getEnteredText());
         for (int i = 0; i < editList.size(); i++) {
             if (CardHolder.getCurrentDetail().getEnteredText().size() - 1 >= i) {
                 editList.get(i).setText(CardHolder.getCurrentDetail().getEnteredText().get(i));
             }
+        }
+
+        if (!(CardHolder.getCurrentDetail().getType().equals(PH.PARAM_TIME_DETAIL_CARD))){
+            removeTimeDetail();
+            timeDetailIsSet = false;
+        } else {
+            setTimeDetail();
+            timeDetailIsSet = true;
         }
     }
 
@@ -200,4 +254,69 @@ public class EditDetailActivity extends AppCompatActivity {
         CardHolder.getCurrentEvent().verifyThatEmptyDetailExists();
         finish();
     }
+
+    private void setTimeDetail() {
+
+        for (int i = 0; i < editList.size(); i++) {
+                editList.get(i).setVisibility(View.GONE);
+        }
+        dateView.setVisibility(View.VISIBLE);
+        timeView.setVisibility(View.VISIBLE);
+        setTime.setVisibility(View.VISIBLE);
+        setDate.setVisibility(View.VISIBLE);
+    }
+
+    private void removeTimeDetail() {
+        for (int i = 0; i < editList.size(); i++) {
+            editList.get(i).setVisibility(View.VISIBLE);
+        }
+        dateView.setVisibility(View.GONE);
+        timeView.setVisibility(View.GONE);
+        setTime.setVisibility(View.GONE);
+        setDate.setVisibility(View.GONE);
+    }
+
+//    DatePicker code below
+
+    @SuppressWarnings("deprecation")
+    public void setDate() {
+        showDialog(999);
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        // TODO Auto-generated method stub
+        if (id == 999) {
+            return new DatePickerDialog(this, myDateListener, year, month, day);
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            // TODO Auto-generated method stub
+            showDate(arg1, arg2+1, arg3);
+//            finish();
+        }
+    };
+
+    private void showDate(int year, int month, int day) {
+        String date = new StringBuilder().append(month).append("/")
+                .append(day).append("/").append(year).toString();
+        dateView.setText(date);
+        CardHolder.getCurrentDetail().setDate(date);
+    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+
+
+//    TimePicker code below
+
+
 }

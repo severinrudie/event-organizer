@@ -24,6 +24,7 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
     private String mIconResource;
     private ArrayList<String> enteredText, displayText;
     private EventCard linkedEvent;
+    private String date, time;
 
     public SuperDetailCard(EventCard event, String type, String head, String sub1, String sub2, String sub3, String sub4) {
         super(type, head, sub1, sub2);
@@ -33,6 +34,8 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         this.displayText = new ArrayList<>();
         this.linkedEvent = CardHolder.getCurrentEvent();
         setIconResource("@drawable/ic_open_in_new_black_24dp");
+        this.date = "";
+        this.time = "";
     }
 
 // EmptyDetailCard constructor
@@ -43,6 +46,8 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
         this.enteredText = new ArrayList<>();
         this.displayText = new ArrayList<>();
         this.linkedEvent = CardHolder.getCurrentEvent();
+        this.date = "";
+        this.time = "";
     }
 
 // Begin getters & setters
@@ -116,6 +121,31 @@ public abstract class SuperDetailCard extends SuperCard implements Serializable 
     public EventCard getParentEvent() {
         return linkedEvent;
     }
-//  End getters & setters
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+        if (!(this.time.equals(""))  && this.getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
+            enteredText.clear();
+            enteredText.add(getTime() + ", " + getDate());
+        }
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+        if (!(this.date.equals("")) && this.getType().equals(PH.PARAM_TIME_DETAIL_CARD)) {
+            enteredText.clear();
+            enteredText.add(getTime() + ", " + getDate());
+        }
+    }
+
+    //  End getters & setters
 
 }
