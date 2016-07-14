@@ -42,6 +42,13 @@ public class DetailsActivity extends AppCompatActivity {
         buttonSaveTitle = (Button) findViewById(R.id.buttonNewEventTitle);
         buttonDelete = (Button) findViewById(R.id.button_delete_event);
         editTextSaveTitle = (EditText) findViewById(R.id.edittextNewEventTitle);
+
+        if (CardHolder.getCurrentEvent().getHeader().length() > 0) {
+            editTextSaveTitle.setHint(cardHolder.getCurrentEvent().getHeader());
+        } else {
+            editTextSaveTitle.setHint("Change Event Name Here");
+        }
+
         mDetailsAdapter = new DetailsAdapter(mContext, eventDetails);
         if (mGridView != null) {
             mGridView.setAdapter(mDetailsAdapter);
@@ -71,6 +78,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void saveEventTitle() {
         if (editTextSaveTitle.getText().toString().length() != 0) {
+            editTextSaveTitle.setHint(editTextSaveTitle.getText());
             CardHolder.getCurrentEvent().setHeader(editTextSaveTitle.getText().toString());
             editTextSaveTitle.setText("");
             String message = "New title saved";
