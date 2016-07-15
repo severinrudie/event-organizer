@@ -1,11 +1,11 @@
 # Event Organizer
 
-##- 1. Description
-##- 2. Roadmap and Current State
-##- 3. Use
-##- 4. Future Goals
-##  - 4.1 Improvements to Current Interface
-##  - 4.2 Additional Planned Features
+#####- 1. Description
+#####- 2. Roadmap and Current State
+#####- 3. Use
+#####- 4. Future Goals
+#####  - 4.1 Improvements to Current Interface
+#####  - 4.2 Additional Planned Features
 
 
 ## 1. Description
