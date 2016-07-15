@@ -8,11 +8,11 @@
 ##  - 4.2 Additional Planned Features
 
 
-###### 1. Description
+## 1. Description
 
 Event Organizer is an Android application designed to simplify the coordination of informal events.  As important information is invariably buried in group texts, EO is an attempt to store and sync these details between all involved parties.  The application is currently only partially functional.
 
-###### 2. Roadmap and Current State
+## 2. Roadmap and Current State
 
 * Create, destroy, and modify an unlimited number of events  -- complete
 * Create, destroy, and modify an unlimited number of details for each event -- complete
@@ -23,7 +23,7 @@ Event Organizer is an Android application designed to simplify the coordination 
   * Log availabilities of various users
   * Display periods of greatest shared availability
 
-###### 3. Use
+## 3. Use
 
 * Events Activity
   * Select any card marked "New Event" to create another card
@@ -39,7 +39,7 @@ Event Organizer is an Android application designed to simplify the coordination 
   * Add in relevent text or time information
   * Save, cancel, and delete buttons are found at the top
 
-###### 4. Future Goals
+## 4. Future Goals
 
 4.1 Improvements to Current Interface
 
