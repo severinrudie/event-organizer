@@ -13,6 +13,7 @@ import com.rudie.severin.eventorganizer.CardClasses.EventCard;
 import com.rudie.severin.eventorganizer.CardClasses.SuperDetailCard;
 import com.rudie.severin.eventorganizer.UtilityClasses.CardHolder;
 import com.rudie.severin.eventorganizer.UtilityClasses.DetailsAdapter;
+import com.rudie.severin.eventorganizer.UtilityClasses.PH;
 import com.rudie.severin.eventorganizer.UtilityClasses.SimpleLogger;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         mContext = this.getApplicationContext();
 
-        cardHolder = CardHolder.getInstance();;
+        cardHolder = CardHolder.getInstance();
         CardHolder.getCurrentEvent().verifyThatEmptyDetailExists();
 
         ArrayList<SuperDetailCard> eventDetails = CardHolder.getCurrentEvent().getAttachedDetails();
@@ -43,7 +44,7 @@ public class DetailsActivity extends AppCompatActivity {
         buttonDelete = (Button) findViewById(R.id.button_delete_event);
         editTextSaveTitle = (EditText) findViewById(R.id.edittextNewEventTitle);
 
-        if (CardHolder.getCurrentEvent().getHeader().length() > 0) {
+        if (!(CardHolder.getCurrentEvent().getHeader().equals(PH.CLICK_ADD_DETAILS))) {
             editTextSaveTitle.setHint(cardHolder.getCurrentEvent().getHeader());
         } else {
             editTextSaveTitle.setHint("Change Event Name Here");

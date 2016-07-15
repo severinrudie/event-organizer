@@ -44,6 +44,8 @@ public final class PH {
 
     public static final String PARAM_CURRENT_DETAIL = "PARAM_CURRENT_DETAIL";
 
+    public static final String CLICK_ADD_DETAILS = "Click here to add details";
+
 
 
 
