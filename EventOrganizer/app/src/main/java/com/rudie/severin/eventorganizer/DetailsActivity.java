@@ -1,6 +1,8 @@
 package com.rudie.severin.eventorganizer;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -66,7 +68,27 @@ public class DetailsActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                confirmDeleteButton();
+//                confirmDeleteButton();
+
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                deleteEvent();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
+
             }
         });
     }  // end onCreate
@@ -90,15 +112,15 @@ public class DetailsActivity extends AppCompatActivity {
         }
     }
 
-    public void confirmDeleteButton() {
-        buttonDelete.setText("Confirm Deletion?");
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deleteEvent();
-            }
-        });
-    }
+//    public void confirmDeleteButton() {
+//        buttonDelete.setText("Confirm Deletion?");
+//        buttonDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                deleteEvent();
+//            }
+//        });
+//    }
 
     public void deleteEvent() {
         CardHolder cardHolder = CardHolder.getInstance();
