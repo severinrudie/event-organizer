@@ -6,6 +6,7 @@
 #####- 4. Future Goals
 #####  - 4.1 Improvements to Current Interface
 #####  - 4.2 Additional Planned Features
+#####- 5. Pictures
 
 
 ## 1. Description
@@ -55,4 +56,13 @@ Event Organizer is an Android application designed to simplify the coordination 
 * Changes to this event made by any user will be propagated to all
 * General availability times will be inferred from Google Calendar, and suggested meeting times displayed overlaying a chart
 
+## 5. Pictures
 
+
+<img src="/Pictures/Event_Organizer_1.png" alt="Drawing" width= "200"/>
+<img src="/Pictures/Event_Organizer_2.png" alt="Drawing" width= "200"/>
+<img src="/Pictures/Event_Organizer_3.png" alt="Drawing" width= "200"/>
+<img src="/Pictures/Event_Organizer_4.png" alt="Drawing" width= "200"/>
+<img src="/Pictures/20160714_202832.jpg" alt="Drawing" width= "200"/>
+<img src="/Pictures/20160714_202852.jpg" alt="Drawing" width= "200"/>
+<img src="/Pictures/20160714_202912.jpg" alt="Drawing" width= "200"/>
